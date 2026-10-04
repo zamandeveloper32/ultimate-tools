@@ -1,94 +1,43 @@
-// ==========================================
-// ULTIMATE TOOLS - REUSABLE CONVERTER ENGINE
-// ==========================================
-
 function initializeConverter(config) {
+    const input = document.getElementById("converterInput");
+    const button = document.getElementById("convertButton");
+    const result = document.getElementById("result");
 
-    const input =
-        document.getElementById("converterInput");
-
-    const button =
-        document.getElementById("convertButton");
-
-    const result =
-        document.getElementById("result");
-
-
-    if (!input || !button || !result) {
-        return;
-    }
-
+    if (!input || !button || !result) return;
 
     function calculate() {
-
-        const value =
-            parseFloat(input.value);
-
+        const value = parseFloat(input.value);
 
         if (isNaN(value)) {
-
-            result.textContent =
-                "Enter a number";
-
+            result.textContent = "Enter a number";
             return;
         }
 
-
-        const convertedValue =
-            value * config.factor;
-
+        const convertedValue = value * config.factor;
 
         result.textContent =
-            formatNumber(convertedValue)
-            + " "
-            + config.to;
+            formatNumber(convertedValue) + " " + config.to;
     }
 
-
     function formatNumber(number) {
-
         if (Number.isInteger(number)) {
             return number.toString();
         }
 
-
-        return parseFloat(
-            number.toFixed(10)
-        ).toString();
+        return parseFloat(number.toFixed(6)).toString();
     }
 
+    button.addEventListener("click", calculate);
 
-    button.addEventListener(
-        "click",
-        calculate
-    );
+    input.addEventListener("input", calculate);
 
-
-    input.addEventListener(
-        "input",
-        calculate
-    );
-
-
-    input.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Enter") {
-                calculate();
-            }
-
+    input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            calculate();
         }
-    );
-
+    });
 }
 
-
-// Start converter
 if (window.converterConfig) {
-
-    initializeConverter(
-        window.converterConfig
-    );
-
+    initializeConverter(window.converterConfig);
 }
