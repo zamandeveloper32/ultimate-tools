@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discount Percentage Calculator - Calculate Discount</title>
+
+    <meta name="description"
+          content="Calculate discount percentage, discount amount and final sale price with this free online discount calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Discount Percentage Calculator</h1>
+
+            <p>
+                Calculate the discount percentage and amount between two prices.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="originalPrice">
+                Original Price
+            </label>
+
+            <input
+                type="number"
+                id="originalPrice"
+                placeholder="Enter original price"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="salePrice">
+                Sale Price
+            </label>
+
+            <input
+                type="number"
+                id="salePrice"
+                placeholder="Enter sale price"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Discount
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Discount Percentage</span>
+
+                <strong id="percentageResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Discount Amount</span>
+
+                <strong id="amountResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>You Pay</span>
+
+                <strong id="payResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+
+<script>
+
+const originalPrice =
+    document.getElementById("originalPrice");
+
+const salePrice =
+    document.getElementById("salePrice");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const percentageResult =
+    document.getElementById("percentageResult");
+
+const amountResult =
+    document.getElementById("amountResult");
+
+const payResult =
+    document.getElementById("payResult");
+
+
+function calculateDiscount() {
+
+    const original =
+        parseFloat(originalPrice.value);
+
+    const sale =
+        parseFloat(salePrice.value);
+
+
+    if (
+        isNaN(original) ||
+        isNaN(sale) ||
+        original <= 0 ||
+        sale < 0 ||
+        sale > original
+    ) {
+
+        percentageResult.textContent =
+            "Enter valid prices";
+
+        amountResult.textContent =
+            "—";
+
+        payResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const discountAmount =
+        original - sale;
+
+
+    const discountPercentage =
+        (discountAmount / original) * 100;
+
+
+    percentageResult.textContent =
+        discountPercentage.toFixed(2) + "%";
+
+
+    amountResult.textContent =
+        discountAmount.toFixed(2);
+
+
+    payResult.textContent =
+        sale.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateDiscount
+);
+
+</script>
+
+</body>
+
+</html>
