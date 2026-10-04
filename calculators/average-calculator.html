@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Average Calculator - Calculate Mean Online</title>
+
+    <meta name="description"
+          content="Free online average calculator. Calculate the average or mean of multiple numbers quickly and accurately.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Average Calculator</h1>
+
+            <p>
+                Calculate the average or mean of multiple numbers.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="numbersInput">
+                Enter Numbers
+            </label>
+
+            <textarea
+                id="numbersInput"
+                rows="6"
+                placeholder="Example: 10, 20, 30, 40, 50"
+            ></textarea>
+
+
+            <button id="calculateButton">
+                Calculate Average
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Average</span>
+
+                <strong id="averageResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total</span>
+
+                <strong id="totalResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Number of Values</span>
+
+                <strong id="countResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const numbersInput =
+    document.getElementById("numbersInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const averageResult =
+    document.getElementById("averageResult");
+
+const totalResult =
+    document.getElementById("totalResult");
+
+const countResult =
+    document.getElementById("countResult");
+
+
+function calculateAverage() {
+
+    const text =
+        numbersInput.value.trim();
+
+    if (!text) {
+
+        averageResult.textContent =
+            "Enter numbers";
+
+        totalResult.textContent =
+            "—";
+
+        countResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const numbers =
+        text
+            .split(/[\s,]+/)
+            .map(Number)
+            .filter(number => !isNaN(number));
+
+
+    if (numbers.length === 0) {
+
+        averageResult.textContent =
+            "Enter valid numbers";
+
+        totalResult.textContent =
+            "—";
+
+        countResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const total =
+        numbers.reduce(
+            (sum, number) => sum + number,
+            0
+        );
+
+
+    const average =
+        total / numbers.length;
+
+
+    averageResult.textContent =
+        Number(average.toFixed(6));
+
+    totalResult.textContent =
+        Number(total.toFixed(6));
+
+    countResult.textContent =
+        numbers.length;
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateAverage
+);
+
+</script>
+
+</body>
+
+</html>
