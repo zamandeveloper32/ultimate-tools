@@ -168,7 +168,15 @@ categoryFilter.addEventListener(
 
 
 // Initial display
-displayTools();
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get("category");
+
+if (selectedCategory) {
+    categoryFilter.value = selectedCategory;
+    displayTools(selectedCategory);
+} else {
+    displayTools();
+}
 
 </script>
 
