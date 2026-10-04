@@ -365,6 +365,21 @@ const tools = [
     ],
     url: "converters/kmh-to-mph.html"
 },
+
+    {
+    name: "Miles per Hour to Kilometers per Hour",
+    description: "Convert miles per hour to kilometers per hour.",
+    category: "Speed",
+    type: "converter",
+    keywords: [
+        "mph to kmh",
+        "mph to km/h",
+        "miles per hour to kilometers per hour",
+        "speed converter",
+        "mph to kilometers"
+    ],
+    url: "converters/mph-to-kmh.html"
+},
     
     
 
