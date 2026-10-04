@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Calculator - Calculate Percentages</title>
+    <meta name="description" content="Free percentage calculator to quickly calculate percentages and percentage values.">
+
+    <link rel="stylesheet" href="../css/style.css?v=3">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo">Ultimate Tools</a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+        </nav>
+    </div>
+</header>
+
+<main class="tool-page">
+    <div class="container">
+
+        <div class="tool-header">
+            <h1>Percentage Calculator</h1>
+            <p>Calculate percentages quickly and easily.</p>
+        </div>
+
+        <div class="converter-card">
+
+            <label for="percentageInput">What is</label>
+
+            <input
+                type="number"
+                id="percentageInput"
+                placeholder="Enter percentage"
+                step="any"
+            >
+
+            <label for="numberInput">% of</label>
+
+            <input
+                type="number"
+                id="numberInput"
+                placeholder="Enter number"
+                step="any"
+            >
+
+            <button id="calculateButton">Calculate</button>
+
+            <div class="result-box">
+                <span>Result</span>
+                <strong id="result">0</strong>
+            </div>
+
+        </div>
+
+        <div class="related-tools">
+            <h2>Related Tools</h2>
+
+            <a href="../converters/cm-to-m.html">
+                Centimeters to Meters
+            </a>
+
+            <a href="../converters/kg-to-lbs.html">
+                Kilograms to Pounds
+            </a>
+
+            <a href="../converters/celsius-to-fahrenheit.html">
+                Celsius to Fahrenheit
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 Ultimate Tools. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+const percentageInput = document.getElementById("percentageInput");
+const numberInput = document.getElementById("numberInput");
+const calculateButton = document.getElementById("calculateButton");
+const result = document.getElementById("result");
+
+function calculatePercentage() {
+
+    const percentage = parseFloat(percentageInput.value);
+    const number = parseFloat(numberInput.value);
+
+    if (isNaN(percentage) || isNaN(number)) {
+        result.textContent = "Enter both values";
+        return;
+    }
+
+    const answer = (percentage / 100) * number;
+
+    if (Number.isInteger(answer)) {
+        result.textContent = answer;
+    } else {
+        result.textContent = parseFloat(answer.toFixed(6));
+    }
+}
+
+calculateButton.addEventListener("click", calculatePercentage);
+
+percentageInput.addEventListener("input", calculatePercentage);
+numberInput.addEventListener("input", calculatePercentage);
+
+percentageInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        calculatePercentage();
+    }
+});
+
+numberInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        calculatePercentage();
+    }
+});
+</script>
+
+</body>
+</html>
