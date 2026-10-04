@@ -395,6 +395,21 @@ const tools = [
     ],
     url: "converters/km-to-miles.html"
 },
+
+    {
+    name: "Miles to Kilometers",
+    description: "Convert miles to kilometers quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "miles to km",
+        "mi to km",
+        "miles to kilometers",
+        "mile converter",
+        "length converter"
+    ],
+    url: "converters/miles-to-km.html"
+},
     
     
 
