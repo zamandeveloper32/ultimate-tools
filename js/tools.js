@@ -607,6 +607,22 @@ const tools = [
     ],
     url: "calculators/break-even-calculator.html"
 },
+
+    {
+    name: "Discount Percentage Calculator",
+    description: "Calculate discount percentage and discount amount from original and sale prices.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "discount percentage",
+        "discount percentage calculator",
+        "discount calculator",
+        "sale price calculator",
+        "discount amount",
+        "percentage discount"
+    ],
+    url: "calculators/discount-percentage.html"
+},
     
 
 ];
