@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ROI Calculator - Calculate Return on Investment</title>
+
+    <meta name="description"
+          content="Free ROI calculator to calculate return on investment, profit or loss, and ROI percentage.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>ROI Calculator</h1>
+
+            <p>
+                Calculate return on investment, profit or loss, and ROI percentage.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="investmentInput">
+                Initial Investment
+            </label>
+
+            <input
+                type="number"
+                id="investmentInput"
+                placeholder="Enter initial investment"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="returnInput">
+                Final Value
+            </label>
+
+            <input
+                type="number"
+                id="returnInput"
+                placeholder="Enter final value"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate ROI
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Profit / Loss</span>
+
+                <strong id="profitResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>ROI</span>
+
+                <strong id="roiResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const investmentInput =
+    document.getElementById("investmentInput");
+
+const returnInput =
+    document.getElementById("returnInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const profitResult =
+    document.getElementById("profitResult");
+
+const roiResult =
+    document.getElementById("roiResult");
+
+
+function calculateROI() {
+
+    const investment =
+        parseFloat(investmentInput.value);
+
+    const finalValue =
+        parseFloat(returnInput.value);
+
+
+    if (
+        isNaN(investment) ||
+        isNaN(finalValue) ||
+        investment <= 0 ||
+        finalValue < 0
+    ) {
+
+        profitResult.textContent =
+            "Enter valid values";
+
+        roiResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const profit =
+        finalValue - investment;
+
+
+    const roi =
+        (profit / investment) * 100;
+
+
+    profitResult.textContent =
+        profit.toFixed(2);
+
+    roiResult.textContent =
+        roi.toFixed(2) + "%";
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateROI
+);
+
+</script>
+
+</body>
+
+</html>
