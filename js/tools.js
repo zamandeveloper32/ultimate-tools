@@ -441,6 +441,21 @@ const tools = [
     ],
     url: "converters/cm-to-inches.html"
 },
+
+    {
+    name: "Feet to Meters",
+    description: "Convert feet to meters quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "feet to meters",
+        "feet to m",
+        "ft to m",
+        "foot to meter",
+        "length converter"
+    ],
+    url: "converters/feet-to-meters.html"
+},
     
     
 
