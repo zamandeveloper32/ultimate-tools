@@ -161,6 +161,24 @@ const tools = [
             "percentage"
         ],
         url: "calculators/discount.html"
+    },
+
+
+        {
+        name: "Compound Interest Calculator",
+        description: "Calculate compound interest and investment growth.",
+        category: "Finance",
+        type: "calculator",
+        keywords: [
+            "compound interest",
+            "interest calculator",
+            "investment",
+            "investment calculator",
+            "savings",
+            "finance",
+            "interest rate"
+        ],
+        url: "calculators/compound-interest.html"
     }
 
 ];
