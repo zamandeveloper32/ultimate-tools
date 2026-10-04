@@ -97,4 +97,21 @@ const tools = [
         ],
         url: "converters/fahrenheit-to-celsius.html"
     }
+
+        {
+        name: "Percentage Calculator",
+        description: "Calculate percentages quickly and easily.",
+        category: "Math",
+        type: "calculator",
+        keywords: [
+            "percentage",
+            "percent",
+            "%",
+            "math",
+            "calculate percentage"
+        ],
+        url: "calculators/percentage.html"
+    }
+
+
 ];
