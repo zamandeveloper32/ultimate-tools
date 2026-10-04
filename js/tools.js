@@ -640,6 +640,23 @@ const tools = [
     ],
     url: "calculators/roi-calculator.html"
 },
+
+    {
+    name: "EMI Calculator",
+    description: "Calculate monthly EMI, total loan payment, and total interest.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "emi calculator",
+        "emi",
+        "loan emi",
+        "monthly loan payment",
+        "loan payment calculator",
+        "monthly payment",
+        "loan calculator"
+    ],
+    url: "calculators/emi-calculator.html"
+},
     
 
 ];
