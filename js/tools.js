@@ -179,6 +179,27 @@ const tools = [
             "interest rate"
         ],
         url: "calculators/compound-interest.html"
+    },
+
+
+        {
+        name: "Word Counter",
+        description: "Count words, characters and sentences instantly.",
+        category: "Digital",
+        type: "tool",
+        keywords: [
+            "word counter",
+            "word count",
+            "character counter",
+            "character count",
+            "text counter",
+            "words",
+            "characters",
+            "sentences",
+            "text"
+        ],
+        url: "calculators/word-counter.html"
     }
+    
 
 ];
