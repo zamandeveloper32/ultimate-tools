@@ -143,5 +143,24 @@ const tools = [
             "health"
         ],
         url: "calculators/bmi.html"
+    },
+
+
+        {
+        name: "Discount Calculator",
+        description: "Calculate discounts, savings and final sale prices.",
+        category: "Math",
+        type: "calculator",
+        keywords: [
+            "discount",
+            "discount calculator",
+            "sale",
+            "sale price",
+            "original price",
+            "savings",
+            "percentage"
+        ],
+        url: "calculators/discount.html"
     }
+
 ];
