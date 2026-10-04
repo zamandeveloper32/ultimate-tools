@@ -334,6 +334,22 @@ const tools = [
     ],
     url: "calculators/time-calculator.html"
 },
+
+    {
+    name: "Loan Payoff Calculator",
+    description: "Calculate how long it will take to pay off a loan and the total interest.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "loan payoff",
+        "loan payoff calculator",
+        "pay off loan",
+        "loan repayment",
+        "debt payoff",
+        "loan interest"
+    ],
+    url: "calculators/loan-payoff.html"
+},
     
     
 
