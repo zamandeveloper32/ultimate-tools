@@ -504,6 +504,22 @@ const tools = [
     ],
     url: "calculators/salary-calculator.html"
 },
+
+    {
+    name: "Mortgage Calculator",
+    description: "Calculate monthly mortgage payments, total payments and total interest.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "mortgage calculator",
+        "mortgage payment",
+        "home loan calculator",
+        "home loan",
+        "mortgage interest",
+        "monthly mortgage payment"
+    ],
+    url: "calculators/mortgage-calculator.html"
+},
     
     
 
