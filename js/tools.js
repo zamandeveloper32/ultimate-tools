@@ -590,6 +590,23 @@ const tools = [
     ],
     url: "calculators/cagr-calculator.html"
 },
+
+    {
+    name: "Break-Even Calculator",
+    description: "Calculate break-even units, revenue and contribution per unit.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "break even calculator",
+        "break even point",
+        "break even analysis",
+        "break even units",
+        "break even sales",
+        "business calculator",
+        "profit calculator"
+    ],
+    url: "calculators/break-even-calculator.html"
+},
     
 
 ];
