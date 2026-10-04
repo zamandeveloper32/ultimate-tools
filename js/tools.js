@@ -217,6 +217,23 @@ const tools = [
             "security"
         ],
         url: "calculators/password-generator.html"
+    },
+
+        {
+        name: "Tip Calculator",
+        description: "Calculate tip amount, total bill and cost per person.",
+        category: "Finance",
+        type: "calculator",
+        keywords: [
+            "tip calculator",
+            "tip",
+            "gratuity",
+            "restaurant tip",
+            "bill calculator",
+            "split bill",
+            "dining"
+        ],
+        url: "calculators/tip-calculator.html"
     }
     
 
