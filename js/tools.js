@@ -520,6 +520,24 @@ const tools = [
     ],
     url: "calculators/mortgage-calculator.html"
 },
+
+
+    {
+    name: "Sales Tax Calculator",
+    description: "Calculate sales tax, tax amount and final price.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "sales tax calculator",
+        "sales tax",
+        "tax calculator",
+        "tax amount",
+        "price after tax",
+        "final price",
+        "tax percentage"
+    ],
+    url: "calculators/sales-tax-calculator.html"
+},
     
     
 
