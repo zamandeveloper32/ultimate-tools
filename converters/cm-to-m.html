@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Centimeters to Meters Converter</title>
+
+    <meta name="description"
+          content="Convert centimeters to meters quickly and easily.">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container header-inner">
+
+        <a href="../index.html" class="logo">
+            Ultimate Tools
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#categories">Categories</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="tool-page">
+
+        <div class="container">
+
+            <a href="../index.html" class="back-link">
+                ← All Tools
+            </a>
+
+            <div class="tool-header">
+
+                <h1>Centimeters to Meters</h1>
+
+                <p>
+                    Convert centimeters to meters instantly.
+                </p>
+
+            </div>
+
+
+            <div class="converter-card">
+
+                <label for="cmInput">
+                    Centimeters
+                </label>
+
+                <input
+                    type="number"
+                    id="cmInput"
+                    placeholder="Enter centimeters"
+                    inputmode="decimal"
+                >
+
+                <button id="convertButton">
+                    Convert
+                </button>
+
+
+                <div class="result-box">
+
+                    <span>Result</span>
+
+                    <strong id="result">
+                        0 m
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="tool-info">
+
+                <h2>CM to M Conversion</h2>
+
+                <p>
+                    To convert centimeters to meters,
+                    divide the number of centimeters by 100.
+                </p>
+
+                <div class="formula">
+                    meters = centimeters ÷ 100
+                </div>
+
+            </div>
+
+
+            <div class="related-tools">
+
+                <h2>Related Tools</h2>
+
+                <a href="#">Meters to Centimeters</a>
+
+                <a href="#">Centimeters to Inches</a>
+
+                <a href="#">Millimeters to Centimeters</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const input =
+    document.getElementById("cmInput");
+
+const button =
+    document.getElementById("convertButton");
+
+const result =
+    document.getElementById("result");
+
+
+function convertCMtoM() {
+
+    const centimeters =
+        parseFloat(input.value);
+
+
+    if (isNaN(centimeters)) {
+
+        result.textContent = "Enter a number";
+
+        return;
+    }
+
+
+    const meters =
+        centimeters / 100;
+
+
+    result.textContent =
+        meters + " m";
+}
+
+
+button.addEventListener(
+    "click",
+    convertCMtoM
+);
+
+
+input.addEventListener(
+    "input",
+    convertCMtoM
+);
+
+</script>
+
+</body>
+
+</html>
