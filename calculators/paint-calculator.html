@@ -53,8 +53,8 @@
 
         <!-- Room dimensions -->
 
-        <h2>Room Dimensions</h2>
-
+               <h2>Room Dimensions</h2>
+        
         <label for="length">Room Length</label>
         <input
             type="number"
@@ -63,7 +63,7 @@
             min="0"
             step="0.01"
         >
-
+        
         <label for="width">Room Width</label>
         <input
             type="number"
@@ -72,7 +72,7 @@
             min="0"
             step="0.01"
         >
-
+        
         <label for="height">Wall Height</label>
         <input
             type="number"
@@ -81,7 +81,22 @@
             min="0"
             step="0.01"
         >
+        
+        <label for="wallSelection">Walls to Paint</label>
+        
+        <select id="wallSelection">
+            <option value="all">All 4 Walls</option>
+            <option value="lengthWalls">Front & Back Walls</option>
+            <option value="widthWalls">Left & Right Walls</option>
+        </select>
 
+        <label for="paintArea">Paint Area</label>
+        
+        <select id="paintArea">
+            <option value="walls">Walls Only</option>
+            <option value="ceiling">Ceiling Only</option>
+            <option value="both">Walls + Ceiling</option>
+        </select>
 
         <!-- Openings -->
 
@@ -237,6 +252,11 @@
             </div>
 
             <div>
+                <span>Ceiling Area</span>
+                <strong id="ceilingArea">—</strong>
+            </div>
+
+            <div>
                 <span>Paintable Area</span>
                 <strong id="paintableArea">—</strong>
             </div>
@@ -368,8 +388,27 @@ const windowArea =
     // Calculate wall surface
 
     const wallArea =
-        2 * (length + width) * height;
-
+               let wallArea;
+        
+        const wallSelection =
+            document.getElementById("wallSelection").value;
+        
+        if (wallSelection === "all") {
+        
+            wallArea =
+                2 * (length + width) * height;
+        
+        } else if (wallSelection === "lengthWalls") {
+        
+            wallArea =
+                2 * length * height;
+        
+        } else if (wallSelection === "widthWalls") {
+        
+            wallArea =
+                2 * width * height;
+        
+        }
 
     // Calculate openings
 
@@ -379,8 +418,55 @@ const windowArea =
 
     // Prevent negative paintable area
 
-    const paintableArea =
-        Math.max(wallArea - openingArea, 0);
+    const ceilingArea =
+    length * width;
+
+let selectedArea = 0;
+
+const paintArea =
+    document.getElementById("paintArea").value;
+
+if (paintArea === "walls") {
+
+    selectedArea = wallArea;
+
+} else if (paintArea === "ceiling") {
+
+    selectedArea = ceilingArea;
+
+} else if (paintArea === "both") {
+
+    selectedArea =
+        wallArea + ceilingArea;
+}
+
+
+/*
+    Doors and windows only reduce
+    the wall area, not the ceiling.
+*/
+        
+        let paintableArea;
+        
+        if (paintArea === "walls") {
+        
+            paintableArea =
+                Math.max(wallArea - openingArea, 0);
+        
+        } else if (paintArea === "ceiling") {
+        
+            paintableArea =
+                ceilingArea;
+        
+        } else {
+        
+            paintableArea =
+                Math.max(
+                    wallArea - openingArea,
+                    0
+                ) + ceilingArea;
+        
+        }
 
 
     /*
@@ -437,6 +523,10 @@ const windowArea =
 
     document.getElementById("openingArea").textContent =
         formatNumber(openingArea) + " " + areaUnit;
+
+
+    document.getElementById("ceilingArea").textContent =
+    formatNumber(ceilingArea) + " " + areaUnit;
 
 
     document.getElementById("paintableArea").textContent =
