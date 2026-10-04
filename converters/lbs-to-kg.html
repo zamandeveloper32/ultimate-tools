@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pounds to Kilograms Converter</title>
+
+    <meta name="description"
+          content="Convert pounds to kilograms quickly and easily.">
+
+    <link rel="stylesheet" href="../css/style.css?v=3">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container header-inner">
+
+        <a href="../index.html" class="logo">
+            Ultimate Tools
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#categories">Categories</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="tool-page">
+
+        <div class="container">
+
+            <a href="../index.html" class="back-link">
+                ← All Tools
+            </a>
+
+            <div class="tool-header">
+
+                <h1>Pounds to Kilograms</h1>
+
+                <p>
+                    Convert pounds to kilograms instantly.
+                </p>
+
+            </div>
+
+
+            <div class="converter-card">
+
+                <label for="converterInput">
+                    Pounds
+                </label>
+
+                <input
+                    type="number"
+                    id="converterInput"
+                    placeholder="Enter pounds"
+                    inputmode="decimal"
+                    step="any"
+                >
+
+                <button id="convertButton">
+                    Convert
+                </button>
+
+
+                <div class="result-box">
+
+                    <span>Result</span>
+
+                    <strong id="result">
+                        0 kg
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="tool-info">
+
+                <h2>LB to KG Conversion</h2>
+
+                <p>
+                    To convert pounds to kilograms,
+                    multiply the pounds by 0.45359237.
+                </p>
+
+                <div class="formula">
+                    kilograms = pounds × 0.45359237
+                </div>
+
+            </div>
+
+
+            <div class="related-tools">
+
+                <h2>Related Tools</h2>
+
+                <a href="kg-to-lbs.html">
+                    Kilograms to Pounds
+                </a>
+
+                <a href="#">
+                    Grams to Ounces
+                </a>
+
+                <a href="#">
+                    Ounces to Pounds
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+window.converterConfig = {
+
+    from: "lb",
+
+    to: "kg",
+
+    factor: 0.45359237
+
+};
+
+</script>
+
+
+<script src="../js/converter.js?v=3"></script>
+
+</body>
+
+</html>
