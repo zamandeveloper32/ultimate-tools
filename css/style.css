@@ -693,27 +693,28 @@ footer {
     }
 
 
-
-
-
-
-
-    .tool-card {
+/* Clickable tool cards */
+a.tool-card,
+a.tool-card:link,
+a.tool-card:visited,
+a.tool-card:hover,
+a.tool-card:active {
+    display: block;
     text-decoration: none;
     color: inherit;
-    display: block;
     cursor: pointer;
 }
 
-.tool-card:hover {
-    transform: translateY(-2px);
-}
-
-.logo a {
+a.tool-card h3,
+a.tool-card p {
     text-decoration: none;
     color: inherit;
 }
 
+a.tool-card:hover {
+    transform: translateY(-2px);
+}
+    
     
 
 }
