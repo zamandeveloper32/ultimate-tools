@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>All Tools - Ultimate Tools</title>
+
+    <meta name="description"
+          content="Browse all free online calculators, converters and useful tools from Ultimate Tools.">
+
+    <link rel="stylesheet" href="css/style.css?v=6">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+            <a href="index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="index.html#calculators">Calculators</a>
+            <a href="index.html#converters">Converters</a>
+            <a href="all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>All Tools</h1>
+
+            <p>
+                Browse our calculators, converters and useful online tools.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="popular">
+
+        <div class="container">
+
+            <div class="all-tools-header">
+
+                <h2>All Tools</h2>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                </select>
+
+            </div>
+
+
+            <div id="allToolsGrid" class="tools-grid"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/tools.js?v=4"></script>
+
+<script>
+
+const toolsGrid =
+    document.getElementById("allToolsGrid");
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+
+// Create category list
+const categories = [
+    ...new Set(tools.map(tool => tool.category))
+];
+
+categories.sort();
+
+categories.forEach(category => {
+
+    const option =
+        document.createElement("option");
+
+    option.value = category;
+    option.textContent = category;
+
+    categoryFilter.appendChild(option);
+
+});
+
+
+// Display tools
+function displayTools(selectedCategory = "all") {
+
+    toolsGrid.innerHTML = "";
+
+    const filteredTools =
+        selectedCategory === "all"
+            ? tools
+            : tools.filter(
+                tool => tool.category === selectedCategory
+            );
+
+
+    filteredTools.forEach(tool => {
+
+        const card =
+            document.createElement("a");
+
+        card.href = tool.url;
+        card.className = "tool-card";
+
+        card.innerHTML = `
+            <h3>${tool.name}</h3>
+            <p>${tool.description}</p>
+            <small>${tool.category}</small>
+        `;
+
+        toolsGrid.appendChild(card);
+
+    });
+
+}
+
+
+categoryFilter.addEventListener(
+    "change",
+    function () {
+
+        displayTools(this.value);
+
+    }
+);
+
+
+// Initial display
+displayTools();
+
+</script>
+
+</body>
+
+</html>
