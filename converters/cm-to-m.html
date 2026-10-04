@@ -13,7 +13,7 @@
     <meta name="description"
           content="Convert centimeters to meters quickly and easily.">
 
-   <link rel="stylesheet" href="../css/style.css?v=2">
+    <link rel="stylesheet" href="../css/style.css?v=3">
 
 </head>
 
@@ -47,6 +47,7 @@
                 ← All Tools
             </a>
 
+
             <div class="tool-header">
 
                 <h1>Centimeters to Meters</h1>
@@ -60,18 +61,17 @@
 
             <div class="converter-card">
 
-                <label for="cmInput">
+                <label for="converterInput">
                     Centimeters
                 </label>
 
-                
-                    <input
+                <input
                     type="number"
                     id="converterInput"
                     placeholder="Enter centimeters"
                     inputmode="decimal"
                     step="any"
-                    >
+                >
 
                 <button id="convertButton">
                     Convert
@@ -111,11 +111,17 @@
 
                 <h2>Related Tools</h2>
 
-                <a href="#">Meters to Centimeters</a>
+                <a href="#">
+                    Meters to Centimeters
+                </a>
 
-                <a href="#">Centimeters to Inches</a>
+                <a href="#">
+                    Centimeters to Inches
+                </a>
 
-                <a href="#">Millimeters to Centimeters</a>
+                <a href="#">
+                    Millimeters to Centimeters
+                </a>
 
             </div>
 
@@ -142,15 +148,20 @@
 <script>
 
 window.converterConfig = {
+
     from: "cm",
+
     to: "m",
+
     factor: 0.01
+
 };
 
 </script>
 
-<script src="../js/converter.js"></script>
-    
+
+<script src="../js/converter.js?v=3"></script>
+
 
 </body>
 
