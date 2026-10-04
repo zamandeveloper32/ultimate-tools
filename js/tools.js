@@ -623,6 +623,23 @@ const tools = [
     ],
     url: "calculators/discount-percentage.html"
 },
+
+    {
+    name: "ROI Calculator",
+    description: "Calculate return on investment, profit or loss, and ROI percentage.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "roi calculator",
+        "roi",
+        "return on investment",
+        "investment return",
+        "investment calculator",
+        "return calculator",
+        "profit on investment"
+    ],
+    url: "calculators/roi-calculator.html"
+},
     
 
 ];
