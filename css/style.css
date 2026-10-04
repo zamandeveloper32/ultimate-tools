@@ -381,33 +381,31 @@ footer {
 
 
 
+
+
 /* ==========================================
    TOOL PAGE
 ========================================== */
 
-.header-inner {
-    min-height: 72px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    text-decoration: none;
-}
-
-
-/* TOOL PAGE */
-
 .tool-page {
-    padding: 45px 0 70px;
+    padding: 55px 0 80px;
 }
+
+
+/* DESKTOP TOOL LAYOUT */
+
+.tool-page .container {
+    max-width: 1050px;
+}
+
+
+/* BACK LINK */
 
 .back-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
     color: var(--muted);
 
@@ -421,27 +419,37 @@ footer {
 }
 
 
+/* TOOL HEADER */
+
 .tool-header {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .tool-header h1 {
-    font-size: 36px;
+    font-size: 42px;
 
-    line-height: 1.2;
+    line-height: 1.15;
 
-    margin-bottom: 8px;
+    letter-spacing: -0.8px;
+
+    margin-bottom: 10px;
 }
 
 .tool-header p {
     color: var(--muted);
+
+    font-size: 17px;
+
+    margin: 0;
 }
 
 
-/* CONVERTER */
+/* MAIN TOOL AREA */
 
 .converter-card {
-    width: min(600px, 100%);
+    width: 100%;
+
+    max-width: 760px;
 
     background: var(--white);
 
@@ -449,24 +457,29 @@ footer {
 
     border-radius: 16px;
 
-    padding: 25px;
+    padding: 32px;
 
     box-shadow:
-        0 8px 25px rgba(15, 23, 42, 0.05);
+        0 12px 35px rgba(15, 23, 42, 0.06);
 }
+
+
+/* INPUT */
 
 .converter-card label {
     display: block;
 
     font-weight: 600;
 
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 }
 
 .converter-card input {
     width: 100%;
 
-    padding: 15px;
+    height: 56px;
+
+    padding: 0 16px;
 
     border: 1px solid var(--border);
 
@@ -476,24 +489,29 @@ footer {
 
     font-size: 17px;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .converter-card input:focus {
     border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 
+/* BUTTON */
+
 .converter-card button {
     width: 100%;
+
+    height: 54px;
 
     border: none;
 
     background: var(--primary);
 
     color: white;
-
-    padding: 15px;
 
     border-radius: 9px;
 
@@ -502,6 +520,8 @@ footer {
     font-weight: 600;
 
     cursor: pointer;
+
+    transition: background 0.2s ease;
 }
 
 .converter-card button:hover {
@@ -512,11 +532,13 @@ footer {
 /* RESULT */
 
 .result-box {
-    margin-top: 20px;
+    margin-top: 22px;
 
-    padding: 20px;
+    padding: 24px;
 
     background: #f8fafc;
+
+    border: 1px solid var(--border);
 
     border-radius: 10px;
 
@@ -530,41 +552,51 @@ footer {
 
     font-size: 13px;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .result-box strong {
-    font-size: 28px;
+    font-size: 32px;
+
+    line-height: 1.2;
 }
 
 
 /* INFORMATION */
 
 .tool-info {
-    width: min(600px, 100%);
+    width: 100%;
 
-    margin-top: 30px;
+    max-width: 760px;
+
+    margin-top: 45px;
 }
 
 .tool-info h2,
 .related-tools h2 {
-    font-size: 22px;
+    font-size: 23px;
 
-    margin-bottom: 10px;
+    line-height: 1.3;
+
+    margin-bottom: 12px;
 }
 
 .tool-info p {
     color: var(--muted);
 
     font-size: 15px;
+
+    max-width: 700px;
 }
 
 .formula {
-    margin-top: 15px;
+    margin-top: 18px;
 
-    padding: 14px;
+    padding: 15px 17px;
 
     background: #f1f5f9;
+
+    border: 1px solid var(--border);
 
     border-radius: 8px;
 
@@ -577,15 +609,21 @@ footer {
 /* RELATED TOOLS */
 
 .related-tools {
-    width: min(600px, 100%);
+    width: 100%;
 
-    margin-top: 35px;
+    max-width: 760px;
+
+    margin-top: 45px;
 }
 
 .related-tools a {
-    display: block;
+    display: flex;
 
-    padding: 14px 0;
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
 
     border-bottom: 1px solid var(--border);
 
@@ -596,8 +634,16 @@ footer {
     font-size: 15px;
 }
 
+.related-tools a::after {
+    content: "→";
 
-/* MOBILE */
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media (max-width: 600px) {
 
@@ -605,12 +651,23 @@ footer {
         padding: 30px 0 50px;
     }
 
+    .tool-header {
+        margin-bottom: 22px;
+    }
+
     .tool-header h1 {
         font-size: 28px;
+
+        letter-spacing: -0.4px;
+    }
+
+    .tool-header p {
+        font-size: 15px;
     }
 
     .converter-card {
         padding: 20px;
+
         border-radius: 12px;
     }
 
@@ -619,9 +676,20 @@ footer {
         min-height: 50px;
     }
 
+    .result-box {
+        padding: 20px;
+    }
+
     .result-box strong {
         font-size: 25px;
     }
 
-}
+    .tool-info {
+        margin-top: 35px;
+    }
 
+    .related-tools {
+        margin-top: 35px;
+    }
+
+}
