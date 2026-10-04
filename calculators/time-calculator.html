@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Time Calculator - Add and Subtract Time</title>
+
+    <meta name="description"
+          content="Free online time calculator. Add hours, minutes and seconds or subtract time easily.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Time Calculator</h1>
+
+            <p>
+                Add or subtract hours, minutes and seconds.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label>First Time</label>
+
+            <div class="fraction-inputs">
+
+                <input
+                    type="number"
+                    id="hours1"
+                    placeholder="Hours"
+                    min="0"
+                >
+
+                <input
+                    type="number"
+                    id="minutes1"
+                    placeholder="Minutes"
+                    min="0"
+                >
+
+                <input
+                    type="number"
+                    id="seconds1"
+                    placeholder="Seconds"
+                    min="0"
+                >
+
+            </div>
+
+
+            <label for="operation">
+                Operation
+            </label>
+
+            <select id="operation">
+
+                <option value="add">
+                    Add (+)
+                </option>
+
+                <option value="subtract">
+                    Subtract (−)
+                </option>
+
+            </select>
+
+
+            <label>Second Time</label>
+
+            <div class="fraction-inputs">
+
+                <input
+                    type="number"
+                    id="hours2"
+                    placeholder="Hours"
+                    min="0"
+                >
+
+                <input
+                    type="number"
+                    id="minutes2"
+                    placeholder="Minutes"
+                    min="0"
+                >
+
+                <input
+                    type="number"
+                    id="seconds2"
+                    placeholder="Seconds"
+                    min="0"
+                >
+
+            </div>
+
+
+            <button id="calculateButton">
+                Calculate
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Result</span>
+
+                <strong id="result">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const result =
+    document.getElementById("result");
+
+
+function getNumber(id) {
+
+    const value =
+        parseInt(document.getElementById(id).value);
+
+    return isNaN(value) ? 0 : value;
+
+}
+
+
+function calculateTime() {
+
+    const h1 = getNumber("hours1");
+    const m1 = getNumber("minutes1");
+    const s1 = getNumber("seconds1");
+
+    const h2 = getNumber("hours2");
+    const m2 = getNumber("minutes2");
+    const s2 = getNumber("seconds2");
+
+
+    const totalSeconds1 =
+        h1 * 3600 +
+        m1 * 60 +
+        s1;
+
+
+    const totalSeconds2 =
+        h2 * 3600 +
+        m2 * 60 +
+        s2;
+
+
+    let totalSeconds;
+
+
+    if (
+        document.getElementById("operation").value === "add"
+    ) {
+
+        totalSeconds =
+            totalSeconds1 + totalSeconds2;
+
+    } else {
+
+        totalSeconds =
+            totalSeconds1 - totalSeconds2;
+
+    }
+
+
+    const negative =
+        totalSeconds < 0;
+
+
+    totalSeconds =
+        Math.abs(totalSeconds);
+
+
+    const hours =
+        Math.floor(totalSeconds / 3600);
+
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) / 60
+        );
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    result.textContent =
+        (negative ? "-" : "") +
+        hours + " h " +
+        minutes + " min " +
+        seconds + " sec";
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateTime
+);
+
+</script>
+
+</body>
+
+</html>
