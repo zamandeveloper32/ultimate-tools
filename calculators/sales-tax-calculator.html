@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales Tax Calculator - Calculate Tax and Total Price</title>
+
+    <meta name="description"
+          content="Free sales tax calculator to calculate tax amount, final price and price before tax.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Sales Tax Calculator</h1>
+
+            <p>
+                Calculate sales tax, tax amount and final price quickly.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="priceInput">
+                Price Before Tax
+            </label>
+
+            <input
+                type="number"
+                id="priceInput"
+                placeholder="Enter price"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="taxInput">
+                Sales Tax Rate (%)
+            </label>
+
+            <input
+                type="number"
+                id="taxInput"
+                placeholder="Enter tax rate"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Tax
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Tax Amount</span>
+
+                <strong id="taxResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Final Price</span>
+
+                <strong id="totalResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const priceInput =
+    document.getElementById("priceInput");
+
+const taxInput =
+    document.getElementById("taxInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const taxResult =
+    document.getElementById("taxResult");
+
+const totalResult =
+    document.getElementById("totalResult");
+
+
+function calculateTax() {
+
+    const price =
+        parseFloat(priceInput.value);
+
+    const taxRate =
+        parseFloat(taxInput.value);
+
+
+    if (
+        isNaN(price) ||
+        isNaN(taxRate) ||
+        price < 0 ||
+        taxRate < 0
+    ) {
+
+        taxResult.textContent =
+            "Enter valid values";
+
+        totalResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const tax =
+        price * (taxRate / 100);
+
+    const total =
+        price + tax;
+
+
+    taxResult.textContent =
+        tax.toFixed(2);
+
+    totalResult.textContent =
+        total.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateTax
+);
+
+</script>
+
+</body>
+
+</html>
