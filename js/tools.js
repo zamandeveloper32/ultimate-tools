@@ -574,6 +574,22 @@ const tools = [
     ],
     url: "calculators/profit-margin-calculator.html"
 },
+
+    {
+    name: "CAGR Calculator",
+    description: "Calculate compound annual growth rate from starting value, ending value and time period.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "cagr calculator",
+        "cagr",
+        "compound annual growth rate",
+        "annual growth rate",
+        "investment growth",
+        "growth calculator"
+    ],
+    url: "calculators/cagr-calculator.html"
+},
     
 
 ];
