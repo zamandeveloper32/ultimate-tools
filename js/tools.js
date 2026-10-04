@@ -556,6 +556,24 @@ const tools = [
     ],
     url: "calculators/vat-calculator.html"
 },
+
+    {
+    name: "Profit Margin Calculator",
+    description: "Calculate profit, profit margin and markup from cost and selling price.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "profit margin calculator",
+        "profit calculator",
+        "profit margin",
+        "markup calculator",
+        "markup",
+        "profit percentage",
+        "selling price",
+        "cost price"
+    ],
+    url: "calculators/profit-margin-calculator.html"
+},
     
 
 ];
