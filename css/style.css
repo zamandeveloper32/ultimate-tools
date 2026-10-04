@@ -692,4 +692,28 @@ footer {
         margin-top: 35px;
     }
 
+
+
+
+
+
+
+    .tool-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+    
+
 }
