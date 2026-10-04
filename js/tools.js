@@ -250,7 +250,24 @@ const tools = [
         "time between dates"
     ],
     url: "calculators/date-difference.html"
-}
+},
+
+
+    {
+    name: "Loan Calculator",
+    description: "Calculate monthly loan payments, total payments and total interest.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "loan",
+        "loan calculator",
+        "monthly payment",
+        "interest",
+        "finance",
+        "loan payment"
+    ],
+    url: "calculators/loan-calculator.html"
+},
     
 
 ];
