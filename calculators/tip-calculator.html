@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tip Calculator - Calculate Tip and Total Bill</title>
+
+    <meta name="description"
+          content="Calculate tips, tip amounts and total bills quickly with this free online tip calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=6">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Tip Calculator</h1>
+
+            <p>
+                Calculate the tip amount and total bill quickly.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="billInput">
+                Bill Amount
+            </label>
+
+            <input
+                type="number"
+                id="billInput"
+                placeholder="Enter bill amount"
+                step="any"
+                min="0"
+            >
+
+
+            <label for="tipInput">
+                Tip Percentage (%)
+            </label>
+
+            <input
+                type="number"
+                id="tipInput"
+                value="15"
+                step="any"
+                min="0"
+            >
+
+
+            <label for="peopleInput">
+                Number of People
+            </label>
+
+            <input
+                type="number"
+                id="peopleInput"
+                value="1"
+                step="1"
+                min="1"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Tip
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Tip Amount</span>
+
+                <strong id="tipResult">
+                    0.00
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Bill</span>
+
+                <strong id="totalResult">
+                    0.00
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Per Person</span>
+
+                <strong id="personResult">
+                    0.00
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="related-tools">
+
+            <h2>Related Tools</h2>
+
+            <a href="percentage.html">
+                Percentage Calculator
+            </a>
+
+            <a href="discount.html">
+                Discount Calculator
+            </a>
+
+            <a href="compound-interest.html">
+                Compound Interest Calculator
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const billInput =
+    document.getElementById("billInput");
+
+const tipInput =
+    document.getElementById("tipInput");
+
+const peopleInput =
+    document.getElementById("peopleInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const tipResult =
+    document.getElementById("tipResult");
+
+const totalResult =
+    document.getElementById("totalResult");
+
+const personResult =
+    document.getElementById("personResult");
+
+
+function calculateTip() {
+
+    const bill =
+        parseFloat(billInput.value);
+
+    const tipPercentage =
+        parseFloat(tipInput.value);
+
+    const people =
+        parseInt(peopleInput.value);
+
+
+    if (
+        isNaN(bill) ||
+        isNaN(tipPercentage) ||
+        isNaN(people) ||
+        bill < 0 ||
+        tipPercentage < 0 ||
+        people < 1
+    ) {
+
+        tipResult.textContent = "Enter valid values";
+        totalResult.textContent = "Enter valid values";
+        personResult.textContent = "Enter valid values";
+
+        return;
+    }
+
+
+    const tip =
+        bill * (tipPercentage / 100);
+
+
+    const total =
+        bill + tip;
+
+
+    const perPerson =
+        total / people;
+
+
+    tipResult.textContent =
+        tip.toFixed(2);
+
+    totalResult.textContent =
+        total.toFixed(2);
+
+    personResult.textContent =
+        perPerson.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateTip
+);
+
+
+billInput.addEventListener(
+    "input",
+    calculateTip
+);
+
+
+tipInput.addEventListener(
+    "input",
+    calculateTip
+);
+
+
+peopleInput.addEventListener(
+    "input",
+    calculateTip
+);
+
+</script>
+
+</body>
+
+</html>
