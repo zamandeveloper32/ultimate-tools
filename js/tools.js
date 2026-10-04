@@ -426,6 +426,21 @@ const tools = [
     ],
     url: "converters/inches-to-cm.html"
 },
+
+    {
+    name: "Centimeters to Inches",
+    description: "Convert centimeters to inches quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "cm to inches",
+        "cm to inch",
+        "centimeters to inches",
+        "centimeter converter",
+        "length converter"
+    ],
+    url: "converters/cm-to-inches.html"
+},
     
     
 
