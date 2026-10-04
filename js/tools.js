@@ -456,6 +456,21 @@ const tools = [
     ],
     url: "converters/feet-to-meters.html"
 },
+
+    {
+    name: "Meters to Feet",
+    description: "Convert meters to feet quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "meters to feet",
+        "meters to ft",
+        "m to ft",
+        "meter to foot",
+        "length converter"
+    ],
+    url: "converters/meters-to-feet.html"
+},
     
     
 
