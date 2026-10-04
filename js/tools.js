@@ -234,7 +234,23 @@ const tools = [
             "dining"
         ],
         url: "calculators/tip-calculator.html"
-    }
+    },
+
+    {
+    name: "Date Difference Calculator",
+    description: "Calculate the difference between two dates in days, months and years.",
+    category: "Date & Time",
+    type: "calculator",
+    keywords: [
+        "date difference",
+        "date calculator",
+        "days between dates",
+        "days calculator",
+        "date duration",
+        "time between dates"
+    ],
+    url: "calculators/date-difference.html"
+}
     
 
 ];
