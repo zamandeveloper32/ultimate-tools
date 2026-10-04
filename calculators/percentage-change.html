@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Increase Calculator - Percentage Change</title>
+
+    <meta name="description"
+          content="Calculate percentage increase or decrease between two numbers with this free online percentage change calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Percentage Increase / Decrease Calculator</h1>
+
+            <p>
+                Calculate the percentage change between two numbers.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="oldValue">
+                Original Value
+            </label>
+
+            <input
+                type="number"
+                id="oldValue"
+                placeholder="Enter original value"
+                step="any"
+            >
+
+
+            <label for="newValue">
+                New Value
+            </label>
+
+            <input
+                type="number"
+                id="newValue"
+                placeholder="Enter new value"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Percentage Change
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Percentage Change</span>
+
+                <strong id="changeResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Change Type</span>
+
+                <strong id="typeResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Difference</span>
+
+                <strong id="differenceResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const oldValue =
+    document.getElementById("oldValue");
+
+const newValue =
+    document.getElementById("newValue");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const changeResult =
+    document.getElementById("changeResult");
+
+const typeResult =
+    document.getElementById("typeResult");
+
+const differenceResult =
+    document.getElementById("differenceResult");
+
+
+function calculatePercentageChange() {
+
+    const oldNumber =
+        parseFloat(oldValue.value);
+
+    const newNumber =
+        parseFloat(newValue.value);
+
+
+    if (
+        isNaN(oldNumber) ||
+        isNaN(newNumber)
+    ) {
+
+        changeResult.textContent =
+            "Enter valid values";
+
+        typeResult.textContent =
+            "—";
+
+        differenceResult.textContent =
+            "—";
+
+        return;
+    }
+
+
+    if (oldNumber === 0) {
+
+        changeResult.textContent =
+            "Cannot calculate";
+
+        typeResult.textContent =
+            "Original value cannot be 0";
+
+        differenceResult.textContent =
+            newNumber;
+
+        return;
+    }
+
+
+    const difference =
+        newNumber - oldNumber;
+
+
+    const percentageChange =
+        (difference / Math.abs(oldNumber)) * 100;
+
+
+    changeResult.textContent =
+        Math.abs(percentageChange).toFixed(2) + "%";
+
+
+    differenceResult.textContent =
+        Number(difference.toFixed(6));
+
+
+    if (difference > 0) {
+
+        typeResult.textContent =
+            "Increase";
+
+    } else if (difference < 0) {
+
+        typeResult.textContent =
+            "Decrease";
+
+    } else {
+
+        typeResult.textContent =
+            "No Change";
+
+    }
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculatePercentageChange
+);
+
+</script>
+
+</body>
+
+</html>
