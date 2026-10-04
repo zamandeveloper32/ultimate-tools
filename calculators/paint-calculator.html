@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paint Calculator - Calculate Paint Needed</title>
+
+    <meta name="description"
+          content="Calculate how much paint you need for walls, doors and windows. Estimate paint quantity, coverage, waste and project cost.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="tool-header">
+        <h1>Paint Calculator</h1>
+
+        <p>
+            Calculate how much paint you need for your walls,
+            including doors, windows, multiple coats and waste.
+        </p>
+    </div>
+
+
+    <div class="calculator-card">
+
+        <!-- Unit -->
+        <label for="unit">Measurement Unit</label>
+
+        <select id="unit">
+            <option value="ft">Feet</option>
+            <option value="m">Meters</option>
+        </select>
+
+
+        <!-- Room dimensions -->
+
+        <h2>Room Dimensions</h2>
+
+        <label for="length">Room Length</label>
+        <input
+            type="number"
+            id="length"
+            placeholder="e.g. 20"
+            min="0"
+            step="0.01"
+        >
+
+        <label for="width">Room Width</label>
+        <input
+            type="number"
+            id="width"
+            placeholder="e.g. 15"
+            min="0"
+            step="0.01"
+        >
+
+        <label for="height">Wall Height</label>
+        <input
+            type="number"
+            id="height"
+            placeholder="e.g. 8"
+            min="0"
+            step="0.01"
+        >
+
+
+        <!-- Openings -->
+
+        <h2>Doors & Windows</h2>
+
+        <label for="doors">Number of Doors</label>
+        <input
+            type="number"
+            id="doors"
+            value="1"
+            min="0"
+            step="1"
+        >
+
+        <label for="windows">Number of Windows</label>
+        <input
+            type="number"
+            id="windows"
+            value="2"
+            min="0"
+            step="1"
+        >
+
+
+        <!-- Paint settings -->
+
+        <h2>Paint Settings</h2>
+
+        <label for="coats">Number of Coats</label>
+
+        <select id="coats">
+            <option value="1">1 Coat</option>
+            <option value="2" selected>2 Coats</option>
+            <option value="3">3 Coats</option>
+            <option value="4">4 Coats</option>
+        </select>
+
+
+        <label for="coverage">
+            Paint Coverage
+            (<span id="coverageUnit">sq ft per gallon</span>)
+        </label>
+
+        <input
+            type="number"
+            id="coverage"
+            value="350"
+            min="1"
+            step="1"
+        >
+
+
+        <label for="waste">Waste Allowance (%)</label>
+
+        <input
+            type="number"
+            id="waste"
+            value="10"
+            min="0"
+            max="100"
+            step="1"
+        >
+
+
+        <!-- Cost -->
+
+        <h2>Optional Cost Estimate</h2>
+
+        <label for="paintPrice">
+            Paint Price per Unit
+        </label>
+
+        <input
+            type="number"
+            id="paintPrice"
+            placeholder="e.g. 35"
+            min="0"
+            step="0.01"
+        >
+
+
+        <button onclick="calculatePaint()">
+            Calculate Paint
+        </button>
+
+
+        <!-- Results -->
+
+        <div class="result-box">
+
+            <h2>Your Paint Estimate</h2>
+
+            <div>
+                <span>Total Wall Area</span>
+                <strong id="wallArea">—</strong>
+            </div>
+
+            <div>
+                <span>Door & Window Area</span>
+                <strong id="openingArea">—</strong>
+            </div>
+
+            <div>
+                <span>Paintable Area</span>
+                <strong id="paintableArea">—</strong>
+            </div>
+
+            <div>
+                <span>Paint Needed</span>
+                <strong id="paintNeeded">—</strong>
+            </div>
+
+            <div>
+                <span>Recommended Amount</span>
+                <strong id="recommendedPaint">—</strong>
+            </div>
+
+            <div>
+                <span>Estimated Paint Cost</span>
+                <strong id="paintCost">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+function calculatePaint() {
+
+    const unit = document.getElementById("unit").value;
+
+    const length = parseFloat(
+        document.getElementById("length").value
+    );
+
+    const width = parseFloat(
+        document.getElementById("width").value
+    );
+
+    const height = parseFloat(
+        document.getElementById("height").value
+    );
+
+    const doors = parseInt(
+        document.getElementById("doors").value
+    ) || 0;
+
+    const windows = parseInt(
+        document.getElementById("windows").value
+    ) || 0;
+
+    const coats = parseInt(
+        document.getElementById("coats").value
+    );
+
+    let coverage = parseFloat(
+        document.getElementById("coverage").value
+    );
+
+    const waste = parseFloat(
+        document.getElementById("waste").value
+    ) || 0;
+
+    const paintPrice = parseFloat(
+        document.getElementById("paintPrice").value
+    ) || 0;
+
+
+    if (
+        isNaN(length) ||
+        isNaN(width) ||
+        isNaN(height) ||
+        length <= 0 ||
+        width <= 0 ||
+        height <= 0 ||
+        coverage <= 0
+    ) {
+
+        document.getElementById("wallArea").textContent =
+            "Enter valid dimensions";
+
+        document.getElementById("openingArea").textContent = "—";
+        document.getElementById("paintableArea").textContent = "—";
+        document.getElementById("paintNeeded").textContent = "—";
+        document.getElementById("recommendedPaint").textContent = "—";
+        document.getElementById("paintCost").textContent = "—";
+
+        return;
+    }
+
+
+    /*
+        Standard opening assumptions:
+
+        Door = 20 sq ft
+        Window = 15 sq ft
+
+        These values can later be made
+        customizable by the user.
+    */
+
+    let doorArea;
+    let windowArea;
+
+    if (unit === "ft") {
+
+        doorArea = 20;
+        windowArea = 15;
+
+    } else {
+
+        doorArea = 1.86;
+        windowArea = 1.39;
+
+    }
+
+
+    // Calculate wall surface
+
+    const wallArea =
+        2 * (length + width) * height;
+
+
+    // Calculate openings
+
+    const openingArea =
+        (doors * doorArea) +
+        (windows * windowArea);
+
+
+    // Prevent negative paintable area
+
+    const paintableArea =
+        Math.max(wallArea - openingArea, 0);
+
+
+    /*
+        If metric is selected,
+        coverage is assumed to be entered
+        as square meters per litre.
+    */
+
+    let paintRequired;
+
+
+    if (unit === "ft") {
+
+        paintRequired =
+            (paintableArea * coats) / coverage;
+
+    } else {
+
+        paintRequired =
+            (paintableArea * coats) / coverage;
+
+    }
+
+
+    // Add waste
+
+    const paintWithWaste =
+        paintRequired * (1 + waste / 100);
+
+
+    // Round UP to a practical whole unit
+
+    const recommended =
+        Math.ceil(paintWithWaste);
+
+
+    // Cost
+
+    const totalCost =
+        recommended * paintPrice;
+
+
+    // Display
+
+    const areaUnit =
+        unit === "ft"
+            ? "sq ft"
+            : "sq m";
+
+
+    document.getElementById("wallArea").textContent =
+        formatNumber(wallArea) + " " + areaUnit;
+
+
+    document.getElementById("openingArea").textContent =
+        formatNumber(openingArea) + " " + areaUnit;
+
+
+    document.getElementById("paintableArea").textContent =
+        formatNumber(paintableArea) + " " + areaUnit;
+
+
+    document.getElementById("paintNeeded").textContent =
+        formatNumber(paintWithWaste);
+
+
+    document.getElementById("recommendedPaint").textContent =
+        recommended + (unit === "ft" ? " gallons" : " litres");
+
+
+    if (paintPrice > 0) {
+
+        document.getElementById("paintCost").textContent =
+            formatCurrency(totalCost);
+
+    } else {
+
+        document.getElementById("paintCost").textContent =
+            "Add paint price";
+
+    }
+
+}
+
+
+function formatNumber(number) {
+
+    return parseFloat(
+        number.toFixed(2)
+    ).toLocaleString();
+
+}
+
+
+function formatCurrency(number) {
+
+    return number.toLocaleString(
+        "en-US",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    );
+
+}
+
+
+/*
+    Automatically update coverage label
+    when unit changes.
+*/
+
+document.getElementById("unit")
+    .addEventListener("change", function() {
+
+        const coverage =
+            document.getElementById("coverage");
+
+        const label =
+            document.getElementById("coverageUnit");
+
+        if (this.value === "ft") {
+
+            coverage.value = 350;
+
+            label.textContent =
+                "sq ft per gallon";
+
+        } else {
+
+            coverage.value = 10;
+
+            label.textContent =
+                "sq m per litre";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
