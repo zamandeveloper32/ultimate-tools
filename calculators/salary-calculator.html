@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salary Calculator - Calculate Hourly, Monthly & Annual Pay</title>
+
+    <meta name="description"
+          content="Free salary calculator to convert hourly, weekly, monthly and annual pay. Calculate your equivalent salary quickly and easily.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Salary Calculator</h1>
+
+            <p>
+                Convert your pay between hourly, weekly, monthly and annual salary.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="salaryInput">
+                Salary Amount
+            </label>
+
+            <input
+                type="number"
+                id="salaryInput"
+                placeholder="Enter salary amount"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="salaryPeriod">
+                Salary Period
+            </label>
+
+            <select id="salaryPeriod">
+
+                <option value="hourly">
+                    Hourly
+                </option>
+
+                <option value="weekly">
+                    Weekly
+                </option>
+
+                <option value="monthly">
+                    Monthly
+                </option>
+
+                <option value="annual">
+                    Annual
+                </option>
+
+            </select>
+
+
+            <label for="hoursPerWeek">
+                Hours Per Week
+            </label>
+
+            <input
+                type="number"
+                id="hoursPerWeek"
+                value="40"
+                min="1"
+                step="any"
+            >
+
+
+            <label for="weeksPerYear">
+                Working Weeks Per Year
+            </label>
+
+            <input
+                type="number"
+                id="weeksPerYear"
+                value="52"
+                min="1"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Salary
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Hourly</span>
+
+                <strong id="hourlyResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Weekly</span>
+
+                <strong id="weeklyResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Monthly</span>
+
+                <strong id="monthlyResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Annual</span>
+
+                <strong id="annualResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const salaryInput =
+    document.getElementById("salaryInput");
+
+const salaryPeriod =
+    document.getElementById("salaryPeriod");
+
+const hoursPerWeek =
+    document.getElementById("hoursPerWeek");
+
+const weeksPerYear =
+    document.getElementById("weeksPerYear");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const hourlyResult =
+    document.getElementById("hourlyResult");
+
+const weeklyResult =
+    document.getElementById("weeklyResult");
+
+const monthlyResult =
+    document.getElementById("monthlyResult");
+
+const annualResult =
+    document.getElementById("annualResult");
+
+
+function formatNumber(number) {
+
+    return Number(
+        number.toFixed(2)
+    ).toLocaleString();
+
+}
+
+
+function calculateSalary() {
+
+    const salary =
+        parseFloat(salaryInput.value);
+
+    const hours =
+        parseFloat(hoursPerWeek.value);
+
+    const weeks =
+        parseFloat(weeksPerYear.value);
+
+
+    if (
+        isNaN(salary) ||
+        isNaN(hours) ||
+        isNaN(weeks) ||
+        salary < 0 ||
+        hours <= 0 ||
+        weeks <= 0
+    ) {
+
+        hourlyResult.textContent =
+            "Enter valid values";
+
+        weeklyResult.textContent =
+            "—";
+
+        monthlyResult.textContent =
+            "—";
+
+        annualResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    let annualSalary;
+
+
+    if (salaryPeriod.value === "hourly") {
+
+        annualSalary =
+            salary * hours * weeks;
+
+    }
+
+    else if (salaryPeriod.value === "weekly") {
+
+        annualSalary =
+            salary * weeks;
+
+    }
+
+    else if (salaryPeriod.value === "monthly") {
+
+        annualSalary =
+            salary * 12;
+
+    }
+
+    else {
+
+        annualSalary =
+            salary;
+
+    }
+
+
+    const weeklySalary =
+        annualSalary / weeks;
+
+    const hourlySalary =
+        weeklySalary / hours;
+
+    const monthlySalary =
+        annualSalary / 12;
+
+
+    hourlyResult.textContent =
+        formatNumber(hourlySalary);
+
+    weeklyResult.textContent =
+        formatNumber(weeklySalary);
+
+    monthlyResult.textContent =
+        formatNumber(monthlySalary);
+
+    annualResult.textContent =
+        formatNumber(annualSalary);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateSalary
+);
+
+</script>
+
+</body>
+
+</html>
