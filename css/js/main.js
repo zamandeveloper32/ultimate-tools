@@ -7,14 +7,14 @@ const tools = [
         name: "Centimeters to Meters",
         description: "Convert centimeters to meters quickly.",
         keywords: ["cm", "centimeter", "centimeters", "meter", "meters"],
-        url: "#"
+        url: "url: "converters/cm-to-m.html""
     },
 
     {
         name: "Meters to Centimeters",
         description: "Convert meters to centimeters quickly.",
         keywords: ["m", "meter", "meters", "cm", "centimeter"],
-        url: "#"
+        url: "url: "converters/m-to-cm.html""
     },
 
     {
