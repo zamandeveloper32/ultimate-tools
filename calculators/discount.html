@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discount Calculator - Calculate Sale Price</title>
+
+    <meta name="description"
+          content="Calculate discounts, savings and final sale prices quickly with this free online discount calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=3">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="../index.html" class="logo">
+            Ultimate Tools
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Discount Calculator</h1>
+
+            <p>
+                Calculate your discount, savings and final sale price.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="priceInput">
+                Original Price
+            </label>
+
+            <input
+                type="number"
+                id="priceInput"
+                placeholder="Enter original price"
+                step="any"
+                min="0"
+            >
+
+
+            <label for="discountInput">
+                Discount (%)
+            </label>
+
+            <input
+                type="number"
+                id="discountInput"
+                placeholder="Enter discount percentage"
+                step="any"
+                min="0"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Discount
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Final Price</span>
+
+                <strong id="result">
+                    Enter your values
+                </strong>
+
+            </div>
+
+
+            <div id="savings"></div>
+
+        </div>
+
+
+        <div class="related-tools">
+
+            <h2>Related Tools</h2>
+
+            <a href="percentage.html">
+                Percentage Calculator
+            </a>
+
+            <a href="../converters/kg-to-lbs.html">
+                Kilograms to Pounds
+            </a>
+
+            <a href="../converters/celsius-to-fahrenheit.html">
+                Celsius to Fahrenheit
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const priceInput =
+    document.getElementById("priceInput");
+
+const discountInput =
+    document.getElementById("discountInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const result =
+    document.getElementById("result");
+
+const savings =
+    document.getElementById("savings");
+
+
+function calculateDiscount() {
+
+    const price =
+        parseFloat(priceInput.value);
+
+    const discount =
+        parseFloat(discountInput.value);
+
+
+    if (
+        isNaN(price) ||
+        isNaN(discount) ||
+        price < 0 ||
+        discount < 0
+    ) {
+
+        result.textContent =
+            "Enter valid values";
+
+        savings.textContent = "";
+
+        return;
+    }
+
+
+    if (discount > 100) {
+
+        result.textContent =
+            "Discount cannot exceed 100%";
+
+        savings.textContent = "";
+
+        return;
+    }
+
+
+    const discountAmount =
+        price * (discount / 100);
+
+
+    const finalPrice =
+        price - discountAmount;
+
+
+    result.textContent =
+        finalPrice.toFixed(2);
+
+
+    savings.textContent =
+        "You save " + discountAmount.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateDiscount
+);
+
+
+priceInput.addEventListener(
+    "input",
+    calculateDiscount
+);
+
+
+discountInput.addEventListener(
+    "input",
+    calculateDiscount
+);
+
+
+priceInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            calculateDiscount();
+        }
+
+    }
+);
+
+
+discountInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            calculateDiscount();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
