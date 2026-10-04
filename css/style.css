@@ -769,6 +769,37 @@ a.tool-card:hover {
     transform: translateY(-2px);
 }
 
+
+    .fraction-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fraction-inputs input {
+    flex: 1;
+}
+
+    
+
+.fraction-inputs span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tool-page select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text);
+    font-size: 15px;
+}
+
+
+    
     
     
 
