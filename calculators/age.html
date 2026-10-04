@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Age Calculator - Calculate Your Exact Age</title>
+    <meta name="description" content="Calculate your exact age in years, months and days with this free online age calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=3">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo">Ultimate Tools</a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+        </nav>
+    </div>
+</header>
+
+<main class="tool-page">
+    <div class="container">
+
+        <div class="tool-header">
+            <h1>Age Calculator</h1>
+            <p>Calculate your exact age in years, months and days.</p>
+        </div>
+
+        <div class="converter-card">
+
+            <label for="birthDate">Date of Birth</label>
+
+            <input
+                type="date"
+                id="birthDate"
+            >
+
+            <label for="todayDate">Calculate Age On</label>
+
+            <input
+                type="date"
+                id="todayDate"
+            >
+
+            <button id="calculateButton">Calculate Age</button>
+
+            <div class="result-box">
+                <span>Your Age</span>
+                <strong id="result">Enter your dates</strong>
+            </div>
+
+        </div>
+
+        <div class="related-tools">
+            <h2>Related Tools</h2>
+
+            <a href="percentage.html">
+                Percentage Calculator
+            </a>
+
+            <a href="../converters/celsius-to-fahrenheit.html">
+                Celsius to Fahrenheit
+            </a>
+
+            <a href="../converters/kg-to-lbs.html">
+                Kilograms to Pounds
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 Ultimate Tools. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+const birthDate = document.getElementById("birthDate");
+const todayDate = document.getElementById("todayDate");
+const calculateButton = document.getElementById("calculateButton");
+const result = document.getElementById("result");
+
+// Automatically set today's date
+const today = new Date();
+
+todayDate.value =
+    today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+
+function calculateAge() {
+
+    if (!birthDate.value || !todayDate.value) {
+        result.textContent = "Enter both dates";
+        return;
+    }
+
+    const birth = new Date(birthDate.value + "T00:00:00");
+    const end = new Date(todayDate.value + "T00:00:00");
+
+    if (birth > end) {
+        result.textContent = "Birth date cannot be after the calculation date";
+        return;
+    }
+
+    let years = end.getFullYear() - birth.getFullYear();
+    let months = end.getMonth() - birth.getMonth();
+    let days = end.getDate() - birth.getDate();
+
+    if (days < 0) {
+        months--;
+
+        const previousMonth = new Date(
+            end.getFullYear(),
+            end.getMonth(),
+            0
+        );
+
+        days += previousMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    result.textContent =
+        years + " years, " +
+        months + " months, " +
+        days + " days";
+}
+
+calculateButton.addEventListener("click", calculateAge);
+
+birthDate.addEventListener("change", calculateAge);
+todayDate.addEventListener("change", calculateAge);
+</script>
+
+</body>
+</html>
