@@ -657,6 +657,25 @@ const tools = [
     ],
     url: "calculators/emi-calculator.html"
 },
+
+    {
+    name: "Paint Calculator",
+    description: "Calculate paint needed for walls and ceilings, including doors, windows, coats, waste, and cost.",
+    category: "Home Improvement",
+    type: "calculator",
+    keywords: [
+        "paint calculator",
+        "paint needed calculator",
+        "how much paint do I need",
+        "wall paint calculator",
+        "room paint calculator",
+        "paint coverage calculator",
+        "painting calculator",
+        "paint cost calculator",
+        "ceiling paint calculator"
+    ],
+    url: "calculators/paint-calculator.html"
+},
     
 
 ];
