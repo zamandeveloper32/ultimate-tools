@@ -131,4 +131,22 @@ const tools = [
 
 
 
+
+    {
+        name: "BMI Calculator",
+        description: "Calculate Body Mass Index using height and weight.",
+        category: "Health",
+        type: "calculator",
+        keywords: [
+            "bmi",
+            "bmi calculator",
+            "body mass index",
+            "weight",
+            "height",
+            "health"
+        ],
+        url: "calculators/bmi.html"
+    }
+
+
 ];
