@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mortgage Calculator - Monthly Payment & Interest</title>
+
+    <meta name="description"
+          content="Free mortgage calculator to calculate monthly mortgage payments, total payments and total interest.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Mortgage Calculator</h1>
+
+            <p>
+                Calculate your estimated monthly mortgage payment,
+                total payments and total interest.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="homePrice">
+                Home Price
+            </label>
+
+            <input
+                type="number"
+                id="homePrice"
+                placeholder="Enter home price"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="downPayment">
+                Down Payment
+            </label>
+
+            <input
+                type="number"
+                id="downPayment"
+                placeholder="Enter down payment"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="interestRate">
+                Annual Interest Rate (%)
+            </label>
+
+            <input
+                type="number"
+                id="interestRate"
+                placeholder="Enter interest rate"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="loanTerm">
+                Loan Term (Years)
+            </label>
+
+            <input
+                type="number"
+                id="loanTerm"
+                placeholder="Enter loan term"
+                min="1"
+                step="1"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Mortgage
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Loan Amount</span>
+
+                <strong id="loanResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Monthly Payment</span>
+
+                <strong id="monthlyResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Payment</span>
+
+                <strong id="totalResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Interest</span>
+
+                <strong id="interestResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const homePrice =
+    document.getElementById("homePrice");
+
+const downPayment =
+    document.getElementById("downPayment");
+
+const interestRate =
+    document.getElementById("interestRate");
+
+const loanTerm =
+    document.getElementById("loanTerm");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const loanResult =
+    document.getElementById("loanResult");
+
+const monthlyResult =
+    document.getElementById("monthlyResult");
+
+const totalResult =
+    document.getElementById("totalResult");
+
+const interestResult =
+    document.getElementById("interestResult");
+
+
+function formatNumber(number) {
+
+    return Number(
+        number.toFixed(2)
+    ).toLocaleString();
+
+}
+
+
+function calculateMortgage() {
+
+    const price =
+        parseFloat(homePrice.value);
+
+    const down =
+        parseFloat(downPayment.value) || 0;
+
+    const rate =
+        parseFloat(interestRate.value);
+
+    const years =
+        parseInt(loanTerm.value);
+
+
+    if (
+        isNaN(price) ||
+        isNaN(rate) ||
+        isNaN(years) ||
+        price <= 0 ||
+        rate < 0 ||
+        years <= 0 ||
+        down < 0 ||
+        down >= price
+    ) {
+
+        loanResult.textContent =
+            "Enter valid values";
+
+        monthlyResult.textContent =
+            "—";
+
+        totalResult.textContent =
+            "—";
+
+        interestResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const principal =
+        price - down;
+
+    const months =
+        years * 12;
+
+    const monthlyRate =
+        rate / 100 / 12;
+
+
+    let monthlyPayment;
+
+
+    if (monthlyRate === 0) {
+
+        monthlyPayment =
+            principal / months;
+
+    } else {
+
+        monthlyPayment =
+            principal *
+            (
+                monthlyRate *
+                Math.pow(
+                    1 + monthlyRate,
+                    months
+                )
+            ) /
+            (
+                Math.pow(
+                    1 + monthlyRate,
+                    months
+                ) - 1
+            );
+
+    }
+
+
+    const totalPayment =
+        monthlyPayment * months;
+
+    const totalInterest =
+        totalPayment - principal;
+
+
+    loanResult.textContent =
+        formatNumber(principal);
+
+    monthlyResult.textContent =
+        formatNumber(monthlyPayment);
+
+    totalResult.textContent =
+        formatNumber(totalPayment);
+
+    interestResult.textContent =
+        formatNumber(totalInterest);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateMortgage
+);
+
+</script>
+
+</body>
+
+</html>
