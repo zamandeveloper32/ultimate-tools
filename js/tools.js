@@ -486,6 +486,24 @@ const tools = [
     ],
     url: "converters/grams-to-ounces.html"
 },
+
+    {
+    name: "Salary Calculator",
+    description: "Convert hourly, weekly, monthly and annual salary.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "salary calculator",
+        "paycheck calculator",
+        "pay calculator",
+        "hourly salary",
+        "annual salary",
+        "monthly salary",
+        "weekly salary",
+        "income calculator"
+    ],
+    url: "calculators/salary-calculator.html"
+},
     
     
 
