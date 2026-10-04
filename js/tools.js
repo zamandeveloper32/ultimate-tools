@@ -268,6 +268,23 @@ const tools = [
     ],
     url: "calculators/loan-calculator.html"
 },
+
+    {
+    name: "Fraction Calculator",
+    description: "Add, subtract, multiply and divide fractions with simplified results.",
+    category: "Math",
+    type: "calculator",
+    keywords: [
+        "fraction",
+        "fraction calculator",
+        "fractions",
+        "add fractions",
+        "subtract fractions",
+        "multiply fractions",
+        "divide fractions"
+    ],
+    url: "calculators/fraction-calculator.html"
+},
     
 
 ];
