@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Date Difference Calculator - Calculate Days Between Dates</title>
+
+    <meta name="description"
+          content="Calculate the exact difference between two dates in years, months and days with this free date calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=6">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Date Difference Calculator</h1>
+
+            <p>
+                Calculate the difference between two dates in days, months and years.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="startDate">
+                Start Date
+            </label>
+
+            <input
+                type="date"
+                id="startDate"
+            >
+
+
+            <label for="endDate">
+                End Date
+            </label>
+
+            <input
+                type="date"
+                id="endDate"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Difference
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Total Days</span>
+
+                <strong id="daysResult">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Difference</span>
+
+                <strong id="dateResult">
+                    Enter both dates
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="related-tools">
+
+            <h2>Related Tools</h2>
+
+            <a href="age.html">
+                Age Calculator
+            </a>
+
+            <a href="percentage.html">
+                Percentage Calculator
+            </a>
+
+            <a href="../all-tools.html">
+                Browse All Tools
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const startDate =
+    document.getElementById("startDate");
+
+const endDate =
+    document.getElementById("endDate");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const daysResult =
+    document.getElementById("daysResult");
+
+const dateResult =
+    document.getElementById("dateResult");
+
+
+function calculateDifference() {
+
+    if (!startDate.value || !endDate.value) {
+
+        daysResult.textContent = "0";
+        dateResult.textContent = "Enter both dates";
+
+        return;
+    }
+
+
+    const start =
+        new Date(startDate.value + "T00:00:00");
+
+    const end =
+        new Date(endDate.value + "T00:00:00");
+
+
+    if (start > end) {
+
+        daysResult.textContent = "0";
+        dateResult.textContent =
+            "End date must be after start date";
+
+        return;
+    }
+
+
+    const millisecondsPerDay =
+        1000 * 60 * 60 * 24;
+
+
+    const totalDays =
+        Math.round(
+            (end - start) / millisecondsPerDay
+        );
+
+
+    daysResult.textContent =
+        totalDays;
+
+
+    let years =
+        end.getFullYear() -
+        start.getFullYear();
+
+    let months =
+        end.getMonth() -
+        start.getMonth();
+
+    let days =
+        end.getDate() -
+        start.getDate();
+
+
+    if (days < 0) {
+
+        months--;
+
+        const previousMonth =
+            new Date(
+                end.getFullYear(),
+                end.getMonth(),
+                0
+            );
+
+        days +=
+            previousMonth.getDate();
+    }
+
+
+    if (months < 0) {
+
+        years--;
+
+        months += 12;
+    }
+
+
+    dateResult.textContent =
+        years + " years, " +
+        months + " months, " +
+        days + " days";
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateDifference
+);
+
+
+startDate.addEventListener(
+    "change",
+    calculateDifference
+);
+
+
+endDate.addEventListener(
+    "change",
+    calculateDifference
+);
+
+</script>
+
+</body>
+
+</html>
