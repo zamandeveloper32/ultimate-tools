@@ -755,10 +755,18 @@ a.tool-card:hover {
     #categoryFilter {
         width: 100%;
     }
-
-
-
     
+}
+
+    .category {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.category:hover {
+    transform: translateY(-2px);
 }
 
     
