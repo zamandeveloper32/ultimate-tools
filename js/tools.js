@@ -538,7 +538,24 @@ const tools = [
     ],
     url: "calculators/sales-tax-calculator.html"
 },
-    
+
+
+    {
+    name: "VAT Calculator",
+    description: "Calculate VAT amount and the final price including VAT.",
+    category: "Finance",
+    type: "calculator",
+    keywords: [
+        "vat calculator",
+        "vat",
+        "value added tax",
+        "vat amount",
+        "price including vat",
+        "price excluding vat",
+        "tax calculator"
+    ],
+    url: "calculators/vat-calculator.html"
+},
     
 
 ];
