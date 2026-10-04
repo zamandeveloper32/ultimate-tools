@@ -13,7 +13,17 @@ function initializeConverter(config) {
             return;
         }
 
-        const convertedValue = value * config.factor;
+        let convertedValue;
+
+        // Formula-based conversion
+        if (typeof config.convert === "function") {
+            convertedValue = config.convert(value);
+        }
+
+        // Simple multiplication conversion
+        else {
+            convertedValue = value * config.factor;
+        }
 
         result.textContent =
             formatNumber(convertedValue) + " " + config.to;
