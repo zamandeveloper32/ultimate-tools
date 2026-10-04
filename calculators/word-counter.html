@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Word Counter - Count Words and Characters</title>
+
+    <meta name="description"
+          content="Free online word counter to count words, characters and sentences quickly and easily.">
+
+    <link rel="stylesheet" href="../css/style.css?v=6">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Word Counter</h1>
+
+            <p>
+                Count words, characters and sentences instantly.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="textInput">
+                Enter Your Text
+            </label>
+
+            <textarea
+                id="textInput"
+                placeholder="Type or paste your text here..."
+                rows="10"
+            ></textarea>
+
+
+            <div class="result-box">
+
+                <span>Words</span>
+
+                <strong id="wordCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Characters</span>
+
+                <strong id="characterCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Characters Without Spaces</span>
+
+                <strong id="characterNoSpaceCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Sentences</span>
+
+                <strong id="sentenceCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="related-tools">
+
+            <h2>Related Tools</h2>
+
+            <a href="percentage.html">
+                Percentage Calculator
+            </a>
+
+            <a href="age.html">
+                Age Calculator
+            </a>
+
+            <a href="../all-tools.html">
+                Browse All Tools
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const textInput =
+    document.getElementById("textInput");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+const characterCount =
+    document.getElementById("characterCount");
+
+const characterNoSpaceCount =
+    document.getElementById("characterNoSpaceCount");
+
+const sentenceCount =
+    document.getElementById("sentenceCount");
+
+
+function countText() {
+
+    const text =
+        textInput.value;
+
+
+    // Characters
+    characterCount.textContent =
+        text.length;
+
+
+    // Characters without spaces
+    characterNoSpaceCount.textContent =
+        text.replace(/\s/g, "").length;
+
+
+    // Words
+    const trimmedText =
+        text.trim();
+
+    if (trimmedText === "") {
+
+        wordCount.textContent = "0";
+
+    } else {
+
+        wordCount.textContent =
+            trimmedText.split(/\s+/).length;
+
+    }
+
+
+    // Sentences
+    const sentences =
+        text.match(/[.!?]+(?=\s|$)/g);
+
+    sentenceCount.textContent =
+        sentences ? sentences.length : 0;
+
+}
+
+
+textInput.addEventListener(
+    "input",
+    countText
+);
+
+</script>
+
+</body>
+
+</html>
