@@ -113,5 +113,22 @@ const tools = [
         url: "calculators/percentage.html"
     }
 
+    {
+        name: "Age Calculator",
+        description: "Calculate your exact age in years, months and days.",
+        category: "Date & Time",
+        type: "calculator",
+        keywords: [
+            "age",
+            "age calculator",
+            "birthday",
+            "birth date",
+            "date of birth",
+            "dob"
+        ],
+        url: "calculators/age.html"
+    }
+
+
 
 ];
