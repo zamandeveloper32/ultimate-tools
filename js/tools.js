@@ -471,6 +471,21 @@ const tools = [
     ],
     url: "converters/meters-to-feet.html"
 },
+
+    {
+    name: "Grams to Ounces",
+    description: "Convert grams to ounces quickly and accurately.",
+    category: "Weight",
+    type: "converter",
+    keywords: [
+        "grams to ounces",
+        "grams to oz",
+        "g to oz",
+        "gram converter",
+        "weight converter"
+    ],
+    url: "converters/grams-to-ounces.html"
+},
     
     
 
