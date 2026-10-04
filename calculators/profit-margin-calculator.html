@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profit Margin Calculator - Calculate Profit & Margin</title>
+
+    <meta name="description"
+          content="Free profit margin calculator to calculate profit, profit margin and markup from cost and selling price.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Profit Margin Calculator</h1>
+
+            <p>
+                Calculate profit, profit margin and markup from cost and selling price.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="costInput">
+                Cost Price
+            </label>
+
+            <input
+                type="number"
+                id="costInput"
+                placeholder="Enter cost price"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="sellingInput">
+                Selling Price
+            </label>
+
+            <input
+                type="number"
+                id="sellingInput"
+                placeholder="Enter selling price"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Profit
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Profit / Loss</span>
+
+                <strong id="profitResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Profit Margin</span>
+
+                <strong id="marginResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Markup</span>
+
+                <strong id="markupResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const costInput =
+    document.getElementById("costInput");
+
+const sellingInput =
+    document.getElementById("sellingInput");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const profitResult =
+    document.getElementById("profitResult");
+
+const marginResult =
+    document.getElementById("marginResult");
+
+const markupResult =
+    document.getElementById("markupResult");
+
+
+function calculateProfit() {
+
+    const cost =
+        parseFloat(costInput.value);
+
+    const sellingPrice =
+        parseFloat(sellingInput.value);
+
+
+    if (
+        isNaN(cost) ||
+        isNaN(sellingPrice) ||
+        cost < 0 ||
+        sellingPrice < 0
+    ) {
+
+        profitResult.textContent =
+            "Enter valid values";
+
+        marginResult.textContent =
+            "—";
+
+        markupResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    if (sellingPrice === 0) {
+
+        profitResult.textContent =
+            "0.00";
+
+        marginResult.textContent =
+            "0%";
+
+        markupResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const profit =
+        sellingPrice - cost;
+
+
+    const margin =
+        (profit / sellingPrice) * 100;
+
+
+    let markup;
+
+
+    if (cost === 0) {
+
+        markup = null;
+
+    } else {
+
+        markup =
+            (profit / cost) * 100;
+
+    }
+
+
+    profitResult.textContent =
+        profit.toFixed(2);
+
+
+    marginResult.textContent =
+        margin.toFixed(2) + "%";
+
+
+    markupResult.textContent =
+        markup === null
+            ? "—"
+            : markup.toFixed(2) + "%";
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateProfit
+);
+
+</script>
+
+</body>
+
+</html>
