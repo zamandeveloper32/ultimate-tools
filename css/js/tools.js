@@ -96,9 +96,9 @@ const tools = [
             "°c"
         ],
         url: "converters/fahrenheit-to-celsius.html"
-    }
+    },
 
-        {
+    {
         name: "Percentage Calculator",
         description: "Calculate percentages quickly and easily.",
         category: "Math",
@@ -111,7 +111,7 @@ const tools = [
             "calculate percentage"
         ],
         url: "calculators/percentage.html"
-    }
+    },
 
     {
         name: "Age Calculator",
@@ -127,10 +127,7 @@ const tools = [
             "dob"
         ],
         url: "calculators/age.html"
-    }
-
-
-
+    },
 
     {
         name: "BMI Calculator",
@@ -147,6 +144,4 @@ const tools = [
         ],
         url: "calculators/bmi.html"
     }
-
-
 ];
