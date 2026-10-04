@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fraction Calculator - Add, Subtract, Multiply & Divide Fractions</title>
+
+    <meta name="description"
+          content="Free online fraction calculator. Add, subtract, multiply and divide fractions with accurate results.">
+
+    <link rel="stylesheet" href="../css/style.css?v=6">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Fraction Calculator</h1>
+
+            <p>
+                Add, subtract, multiply or divide two fractions.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label>First Fraction</label>
+
+            <div class="fraction-inputs">
+
+                <input
+                    type="number"
+                    id="num1"
+                    placeholder="Numerator"
+                >
+
+                <span>/</span>
+
+                <input
+                    type="number"
+                    id="den1"
+                    placeholder="Denominator"
+                >
+
+            </div>
+
+
+            <label>Operation</label>
+
+            <select id="operation">
+
+                <option value="+">Add (+)</option>
+                <option value="-">Subtract (−)</option>
+                <option value="*">Multiply (×)</option>
+                <option value="/">Divide (÷)</option>
+
+            </select>
+
+
+            <label>Second Fraction</label>
+
+            <div class="fraction-inputs">
+
+                <input
+                    type="number"
+                    id="num2"
+                    placeholder="Numerator"
+                >
+
+                <span>/</span>
+
+                <input
+                    type="number"
+                    id="den2"
+                    placeholder="Denominator"
+                >
+
+            </div>
+
+
+            <button id="calculateButton">
+                Calculate
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Result</span>
+
+                <strong id="result">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const num1 = document.getElementById("num1");
+const den1 = document.getElementById("den1");
+
+const num2 = document.getElementById("num2");
+const den2 = document.getElementById("den2");
+
+const operation =
+    document.getElementById("operation");
+
+const button =
+    document.getElementById("calculateButton");
+
+const result =
+    document.getElementById("result");
+
+
+function gcd(a, b) {
+
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while (b !== 0) {
+
+        const temp = b;
+
+        b = a % b;
+        a = temp;
+
+    }
+
+    return a;
+}
+
+
+function simplify(numerator, denominator) {
+
+    if (denominator === 0) {
+        return null;
+    }
+
+    if (denominator < 0) {
+
+        numerator = -numerator;
+        denominator = -denominator;
+
+    }
+
+    const divisor =
+        gcd(numerator, denominator);
+
+    return {
+
+        numerator: numerator / divisor,
+
+        denominator: denominator / divisor
+
+    };
+
+}
+
+
+function calculateFraction() {
+
+    const a = parseInt(num1.value);
+    const b = parseInt(den1.value);
+
+    const c = parseInt(num2.value);
+    const d = parseInt(den2.value);
+
+    const op = operation.value;
+
+
+    if (
+        isNaN(a) ||
+        isNaN(b) ||
+        isNaN(c) ||
+        isNaN(d)
+    ) {
+
+        result.textContent =
+            "Enter all values";
+
+        return;
+
+    }
+
+
+    if (b === 0 || d === 0) {
+
+        result.textContent =
+            "Denominator cannot be 0";
+
+        return;
+
+    }
+
+
+    let numerator;
+    let denominator;
+
+
+    if (op === "+") {
+
+        numerator =
+            a * d + c * b;
+
+        denominator =
+            b * d;
+
+    }
+
+
+    else if (op === "-") {
+
+        numerator =
+            a * d - c * b;
+
+        denominator =
+            b * d;
+
+    }
+
+
+    else if (op === "*") {
+
+        numerator =
+            a * c;
+
+        denominator =
+            b * d;
+
+    }
+
+
+    else if (op === "/") {
+
+        if (c === 0) {
+
+            result.textContent =
+                "Cannot divide by zero";
+
+            return;
+
+        }
+
+        numerator =
+            a * d;
+
+        denominator =
+            b * c;
+
+    }
+
+
+    const simplified =
+        simplify(numerator, denominator);
+
+
+    if (!simplified) {
+
+        result.textContent =
+            "Invalid fraction";
+
+        return;
+
+    }
+
+
+    if (simplified.denominator === 1) {
+
+        result.textContent =
+            simplified.numerator;
+
+    } else {
+
+        result.textContent =
+            simplified.numerator +
+            " / " +
+            simplified.denominator;
+
+    }
+
+}
+
+
+button.addEventListener(
+    "click",
+    calculateFraction
+);
+
+</script>
+
+</body>
+
+</html>
