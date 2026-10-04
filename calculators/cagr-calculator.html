@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAGR Calculator - Calculate Compound Annual Growth Rate</title>
+
+    <meta name="description"
+          content="Free CAGR calculator to calculate compound annual growth rate from starting value, ending value and investment period.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>CAGR Calculator</h1>
+
+            <p>
+                Calculate the compound annual growth rate of an investment or business.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="startValue">
+                Starting Value
+            </label>
+
+            <input
+                type="number"
+                id="startValue"
+                placeholder="Enter starting value"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="endValue">
+                Ending Value
+            </label>
+
+            <input
+                type="number"
+                id="endValue"
+                placeholder="Enter ending value"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="years">
+                Number of Years
+            </label>
+
+            <input
+                type="number"
+                id="years"
+                placeholder="Enter number of years"
+                min="0.01"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate CAGR
+            </button>
+
+
+            <div class="result-box">
+
+                <span>CAGR</span>
+
+                <strong id="cagrResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Growth</span>
+
+                <strong id="growthResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const startValue =
+    document.getElementById("startValue");
+
+const endValue =
+    document.getElementById("endValue");
+
+const years =
+    document.getElementById("years");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const cagrResult =
+    document.getElementById("cagrResult");
+
+const growthResult =
+    document.getElementById("growthResult");
+
+
+function calculateCAGR() {
+
+    const start =
+        parseFloat(startValue.value);
+
+    const end =
+        parseFloat(endValue.value);
+
+    const period =
+        parseFloat(years.value);
+
+
+    if (
+        isNaN(start) ||
+        isNaN(end) ||
+        isNaN(period) ||
+        start <= 0 ||
+        end <= 0 ||
+        period <= 0
+    ) {
+
+        cagrResult.textContent =
+            "Enter valid values";
+
+        growthResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const cagr =
+        (
+            Math.pow(
+                end / start,
+                1 / period
+            ) - 1
+        ) * 100;
+
+
+    const totalGrowth =
+        ((end - start) / start) * 100;
+
+
+    cagrResult.textContent =
+        cagr.toFixed(2) + "%";
+
+
+    growthResult.textContent =
+        totalGrowth.toFixed(2) + "%";
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateCAGR
+);
+
+</script>
+
+</body>
+
+</html>
