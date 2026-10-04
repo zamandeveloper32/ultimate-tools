@@ -410,6 +410,22 @@ const tools = [
     ],
     url: "converters/miles-to-km.html"
 },
+
+
+    {
+    name: "Inches to Centimeters",
+    description: "Convert inches to centimeters quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "inches to cm",
+        "inch to cm",
+        "in to cm",
+        "inches to centimeters",
+        "length converter"
+    ],
+    url: "converters/inches-to-cm.html"
+},
     
     
 
