@@ -300,6 +300,24 @@ const tools = [
     ],
     url: "calculators/average-calculator.html"
 },
+
+
+    {
+    name: "Percentage Increase / Decrease Calculator",
+    description: "Calculate percentage increase or decrease between two values.",
+    category: "Math",
+    type: "calculator",
+    keywords: [
+        "percentage change",
+        "percentage increase",
+        "percentage decrease",
+        "percent change",
+        "increase calculator",
+        "decrease calculator"
+    ],
+    url: "calculators/percentage-change.html"
+},
+    
     
 
 ];
