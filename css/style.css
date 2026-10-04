@@ -1,13 +1,291 @@
-/* Ultimate Tools - Main Styles */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --text: #111827;
+    --muted: #64748b;
+    --background: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f8fafc;
-    color: #111827;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+
+/* HEADER */
+
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+header .container {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 90px 0 70px;
+    background: var(--white);
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+
+.search-box {
+    width: min(700px, 100%);
+    margin: auto;
+
+    display: flex;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 6px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.search-box input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    padding: 15px;
+
+    font-size: 16px;
+}
+
+.search-box button {
+    border: none;
+
+    background: var(--primary);
+    color: white;
+
+    padding: 0 25px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: var(--primary-dark);
+}
+
+
+/* SECTIONS */
+
+.popular,
+.categories {
+    padding: 70px 0;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+
+/* TOOLS */
+
+.tools-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.tool-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    transition: 0.2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.tool-card h3 {
+    margin-bottom: 8px;
+}
+
+.tool-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* CATEGORIES */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.category {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    font-size: 30px;
+}
+
+.category h3 {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: var(--white);
+
+    border-top: 1px solid var(--border);
+
+    padding: 30px 0;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    header .container {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 0;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 65px 0 50px;
+    }
+
+    .tools-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .category-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .tools-grid,
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .search-box button {
+        padding: 14px;
+    }
+
 }
