@@ -285,6 +285,21 @@ const tools = [
     ],
     url: "calculators/fraction-calculator.html"
 },
+
+    {
+    name: "Average Calculator",
+    description: "Calculate the average or mean of multiple numbers.",
+    category: "Math",
+    type: "calculator",
+    keywords: [
+        "average",
+        "average calculator",
+        "mean",
+        "mean calculator",
+        "average of numbers"
+    ],
+    url: "calculators/average-calculator.html"
+},
     
 
 ];
