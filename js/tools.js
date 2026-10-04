@@ -199,6 +199,24 @@ const tools = [
             "text"
         ],
         url: "calculators/word-counter.html"
+    },
+
+
+        {
+        name: "Password Generator",
+        description: "Generate strong random passwords with customizable options.",
+        category: "Digital",
+        type: "tool",
+        keywords: [
+            "password generator",
+            "password",
+            "strong password",
+            "secure password",
+            "random password",
+            "password creator",
+            "security"
+        ],
+        url: "calculators/password-generator.html"
     }
     
 
