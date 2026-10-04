@@ -317,6 +317,23 @@ const tools = [
     ],
     url: "calculators/percentage-change.html"
 },
+
+    {
+    name: "Time Calculator",
+    description: "Add or subtract hours, minutes and seconds.",
+    category: "Date & Time",
+    type: "calculator",
+    keywords: [
+        "time calculator",
+        "add time",
+        "subtract time",
+        "hours",
+        "minutes",
+        "seconds",
+        "time addition"
+    ],
+    url: "calculators/time-calculator.html"
+},
     
     
 
