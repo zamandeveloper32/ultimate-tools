@@ -1,9 +1,4 @@
-// ==========================================
-// ULTIMATE TOOLS - MASTER TOOL DIRECTORY
-// ==========================================
-
 const tools = [
-
     {
         name: "Centimeters to Meters",
         description: "Convert centimeters to meters quickly.",
@@ -29,7 +24,8 @@ const tools = [
             "meter",
             "meters",
             "cm",
-            "centimeter"
+            "centimeter",
+            "centimeters"
         ],
         url: "converters/m-to-cm.html"
     },
@@ -62,7 +58,8 @@ const tools = [
             "pound",
             "pounds",
             "kg",
-            "kilogram"
+            "kilogram",
+            "kilograms"
         ],
         url: "converters/lbs-to-kg.html"
     },
@@ -77,7 +74,9 @@ const tools = [
             "fahrenheit",
             "temperature",
             "c",
-            "f"
+            "f",
+            "°c",
+            "°f"
         ],
         url: "converters/celsius-to-fahrenheit.html"
     },
@@ -92,65 +91,10 @@ const tools = [
             "celsius",
             "temperature",
             "f",
-            "c"
+            "c",
+            "°f",
+            "°c"
         ],
         url: "converters/fahrenheit-to-celsius.html"
-    },
-
-    {
-        name: "Percentage Calculator",
-        description: "Calculate percentages quickly.",
-        category: "Math",
-        type: "calculator",
-        keywords: [
-            "percentage",
-            "percent",
-            "%",
-            "math"
-        ],
-        url: "calculators/percentage.html"
-    },
-
-    {
-        name: "Age Calculator",
-        description: "Calculate your exact age.",
-        category: "Date & Time",
-        type: "calculator",
-        keywords: [
-            "age",
-            "birthday",
-            "birth",
-            "date"
-        ],
-        url: "calculators/age.html"
-    },
-
-    {
-        name: "BMI Calculator",
-        description: "Calculate Body Mass Index.",
-        category: "Health",
-        type: "calculator",
-        keywords: [
-            "bmi",
-            "body mass",
-            "health",
-            "weight"
-        ],
-        url: "calculators/bmi.html"
-    },
-
-    {
-        name: "Discount Calculator",
-        description: "Calculate discounts and final prices.",
-        category: "Math",
-        type: "calculator",
-        keywords: [
-            "discount",
-            "sale",
-            "price",
-            "percentage"
-        ],
-        url: "calculators/discount.html"
     }
-
 ];
