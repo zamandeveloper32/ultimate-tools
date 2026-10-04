@@ -141,51 +141,16 @@
 
 <script>
 
-const input =
-    document.getElementById("cmInput");
-
-const button =
-    document.getElementById("convertButton");
-
-const result =
-    document.getElementById("result");
-
-
-function convertCMtoM() {
-
-    const centimeters =
-        parseFloat(input.value);
-
-
-    if (isNaN(centimeters)) {
-
-        result.textContent = "Enter a number";
-
-        return;
-    }
-
-
-    const meters =
-        centimeters / 100;
-
-
-    result.textContent =
-        meters + " m";
-}
-
-
-button.addEventListener(
-    "click",
-    convertCMtoM
-);
-
-
-input.addEventListener(
-    "input",
-    convertCMtoM
-);
+window.converterConfig = {
+    from: "cm",
+    to: "m",
+    factor: 0.01
+};
 
 </script>
+
+<script src="../js/converter.js"></script>
+    
 
 </body>
 
