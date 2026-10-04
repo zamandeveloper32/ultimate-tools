@@ -350,6 +350,21 @@ const tools = [
     ],
     url: "calculators/loan-payoff.html"
 },
+
+    {
+    name: "Kilometers per Hour to Miles per Hour",
+    description: "Convert kilometers per hour to miles per hour.",
+    category: "Speed",
+    type: "converter",
+    keywords: [
+        "kmh to mph",
+        "km/h to mph",
+        "kilometers per hour to miles per hour",
+        "speed converter",
+        "km to mph"
+    ],
+    url: "converters/kmh-to-mph.html"
+},
     
     
 
