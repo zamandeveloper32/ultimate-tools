@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Break-Even Calculator - Calculate Break-Even Point</title>
+
+    <meta name="description"
+          content="Free break-even calculator to calculate the number of units and sales revenue needed to break even.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Break-Even Calculator</h1>
+
+            <p>
+                Calculate how many units you need to sell to break even.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="fixedCosts">
+                Fixed Costs
+            </label>
+
+            <input
+                type="number"
+                id="fixedCosts"
+                placeholder="Enter fixed costs"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="sellingPrice">
+                Selling Price Per Unit
+            </label>
+
+            <input
+                type="number"
+                id="sellingPrice"
+                placeholder="Enter selling price"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="variableCost">
+                Variable Cost Per Unit
+            </label>
+
+            <input
+                type="number"
+                id="variableCost"
+                placeholder="Enter variable cost"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Break-Even
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Break-Even Units</span>
+
+                <strong id="unitsResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Break-Even Revenue</span>
+
+                <strong id="revenueResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Contribution Per Unit</span>
+
+                <strong id="contributionResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const fixedCosts =
+    document.getElementById("fixedCosts");
+
+const sellingPrice =
+    document.getElementById("sellingPrice");
+
+const variableCost =
+    document.getElementById("variableCost");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const unitsResult =
+    document.getElementById("unitsResult");
+
+const revenueResult =
+    document.getElementById("revenueResult");
+
+const contributionResult =
+    document.getElementById("contributionResult");
+
+
+function calculateBreakEven() {
+
+    const fixed =
+        parseFloat(fixedCosts.value);
+
+    const selling =
+        parseFloat(sellingPrice.value);
+
+    const variable =
+        parseFloat(variableCost.value);
+
+
+    if (
+        isNaN(fixed) ||
+        isNaN(selling) ||
+        isNaN(variable) ||
+        fixed < 0 ||
+        selling <= 0 ||
+        variable < 0
+    ) {
+
+        unitsResult.textContent =
+            "Enter valid values";
+
+        revenueResult.textContent =
+            "—";
+
+        contributionResult.textContent =
+            "—";
+
+        return;
+
+    }
+
+
+    const contribution =
+        selling - variable;
+
+
+    if (contribution <= 0) {
+
+        unitsResult.textContent =
+            "Not possible";
+
+        revenueResult.textContent =
+            "Selling price must exceed variable cost";
+
+        contributionResult.textContent =
+            contribution.toFixed(2);
+
+        return;
+
+    }
+
+
+    const exactUnits =
+        fixed / contribution;
+
+
+    const breakEvenUnits =
+        Math.ceil(exactUnits);
+
+
+    const breakEvenRevenue =
+        breakEvenUnits * selling;
+
+
+    unitsResult.textContent =
+        breakEvenUnits;
+
+
+    revenueResult.textContent =
+        breakEvenRevenue.toFixed(2);
+
+
+    contributionResult.textContent =
+        contribution.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculateBreakEven
+);
+
+</script>
+
+</body>
+
+</html>
