@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Payoff Calculator - Calculate Loan Payoff Time</title>
+
+    <meta name="description"
+          content="Calculate how long it will take to pay off a loan and how much interest you will pay with this free loan payoff calculator.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Loan Payoff Calculator</h1>
+
+            <p>
+                Calculate how long it will take to pay off your loan.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="balance">
+                Remaining Loan Balance
+            </label>
+
+            <input
+                type="number"
+                id="balance"
+                placeholder="Enter loan balance"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="rate">
+                Annual Interest Rate (%)
+            </label>
+
+            <input
+                type="number"
+                id="rate"
+                placeholder="Enter annual interest rate"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="payment">
+                Monthly Payment
+            </label>
+
+            <input
+                type="number"
+                id="payment"
+                placeholder="Enter monthly payment"
+                min="0"
+                step="any"
+            >
+
+
+            <button id="calculateButton">
+                Calculate Payoff
+            </button>
+
+
+            <div class="result-box">
+
+                <span>Payoff Time</span>
+
+                <strong id="timeResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Payments</span>
+
+                <strong id="totalResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="result-box">
+
+                <span>Total Interest</span>
+
+                <strong id="interestResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+const balanceInput =
+    document.getElementById("balance");
+
+const rateInput =
+    document.getElementById("rate");
+
+const paymentInput =
+    document.getElementById("payment");
+
+const calculateButton =
+    document.getElementById("calculateButton");
+
+const timeResult =
+    document.getElementById("timeResult");
+
+const totalResult =
+    document.getElementById("totalResult");
+
+const interestResult =
+    document.getElementById("interestResult");
+
+
+function calculatePayoff() {
+
+    const balance =
+        parseFloat(balanceInput.value);
+
+    const annualRate =
+        parseFloat(rateInput.value);
+
+    const payment =
+        parseFloat(paymentInput.value);
+
+
+    if (
+        isNaN(balance) ||
+        isNaN(annualRate) ||
+        isNaN(payment) ||
+        balance <= 0 ||
+        annualRate < 0 ||
+        payment <= 0
+    ) {
+
+        timeResult.textContent =
+            "Enter valid values";
+
+        totalResult.textContent =
+            "—";
+
+        interestResult.textContent =
+            "—";
+
+        return;
+    }
+
+
+    const monthlyRate =
+        annualRate / 100 / 12;
+
+
+    let months;
+
+
+    if (monthlyRate === 0) {
+
+        months =
+            Math.ceil(balance / payment);
+
+    } else {
+
+        if (payment <= balance * monthlyRate) {
+
+            timeResult.textContent =
+                "Payment too low";
+
+            totalResult.textContent =
+                "—";
+
+            interestResult.textContent =
+                "Payment must exceed monthly interest";
+
+            return;
+
+        }
+
+
+        months =
+            Math.ceil(
+                -Math.log(
+                    1 -
+                    (balance * monthlyRate) /
+                    payment
+                ) /
+                Math.log(
+                    1 + monthlyRate
+                )
+            );
+
+    }
+
+
+    let remaining =
+        balance;
+
+    let totalPaid =
+        0;
+
+    let actualMonths =
+        0;
+
+
+    while (
+        remaining > 0 &&
+        actualMonths < 1200
+    ) {
+
+        const interest =
+            remaining * monthlyRate;
+
+        let principal =
+            payment - interest;
+
+
+        if (principal <= 0) {
+
+            break;
+
+        }
+
+
+        if (principal > remaining) {
+
+            principal =
+                remaining;
+
+        }
+
+
+        const actualPayment =
+            principal + interest;
+
+
+        remaining -= principal;
+
+        totalPaid += actualPayment;
+
+        actualMonths++;
+
+    }
+
+
+    const years =
+        Math.floor(actualMonths / 12);
+
+    const remainingMonths =
+        actualMonths % 12;
+
+
+    let payoffText = "";
+
+
+    if (years > 0) {
+
+        payoffText +=
+            years +
+            (years === 1 ? " year" : " years");
+
+    }
+
+
+    if (remainingMonths > 0) {
+
+        if (payoffText) {
+            payoffText += " ";
+        }
+
+        payoffText +=
+            remainingMonths +
+            (remainingMonths === 1
+                ? " month"
+                : " months");
+
+    }
+
+
+    if (!payoffText) {
+
+        payoffText =
+            "Less than 1 month";
+
+    }
+
+
+    const totalInterest =
+        totalPaid - balance;
+
+
+    timeResult.textContent =
+        payoffText;
+
+    totalResult.textContent =
+        totalPaid.toFixed(2);
+
+    interestResult.textContent =
+        totalInterest.toFixed(2);
+
+}
+
+
+calculateButton.addEventListener(
+    "click",
+    calculatePayoff
+);
+
+</script>
+
+</body>
+
+</html>
