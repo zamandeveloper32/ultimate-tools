@@ -380,6 +380,21 @@ const tools = [
     ],
     url: "converters/mph-to-kmh.html"
 },
+
+    {
+    name: "Kilometers to Miles",
+    description: "Convert kilometers to miles quickly and accurately.",
+    category: "Length",
+    type: "converter",
+    keywords: [
+        "km to miles",
+        "km to mi",
+        "kilometers to miles",
+        "kilometer converter",
+        "length converter"
+    ],
+    url: "converters/km-to-miles.html"
+},
     
     
 
