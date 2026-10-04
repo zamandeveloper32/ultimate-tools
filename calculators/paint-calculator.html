@@ -339,18 +339,28 @@ function calculatePaint() {
         customizable by the user.
     */
 
-    let doorArea;
-    let windowArea;
+  const doorWidth = parseFloat(
+    document.getElementById("doorWidth").value
+) || 0;
 
-    if (unit === "ft") {
+const doorHeight = parseFloat(
+    document.getElementById("doorHeight").value
+) || 0;
 
-        doorArea = 20;
-        windowArea = 15;
+const windowWidth = parseFloat(
+    document.getElementById("windowWidth").value
+) || 0;
 
-    } else {
+const windowHeight = parseFloat(
+    document.getElementById("windowHeight").value
+) || 0;
 
-        doorArea = 1.86;
-        windowArea = 1.39;
+
+const doorArea =
+    doors * doorWidth * doorHeight;
+
+const windowArea =
+    windows * windowWidth * windowHeight;
 
     }
 
@@ -364,8 +374,7 @@ function calculatePaint() {
     // Calculate openings
 
     const openingArea =
-        (doors * doorArea) +
-        (windows * windowArea);
+      doorArea + windowArea;
 
 
     // Prevent negative paintable area
