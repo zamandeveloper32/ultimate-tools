@@ -13,7 +13,7 @@
     <meta name="description"
           content="Free online calculators, converters and useful tools. Fast, simple and easy to use.">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=4">
 
 </head>
 
@@ -24,13 +24,13 @@
         <div class="container">
 
             <div class="logo">
-                Ultimate Tools
+                <a href="index.html">Ultimate Tools</a>
             </div>
 
             <nav>
-                <a href="#">Calculators</a>
-                <a href="#">Converters</a>
-                <a href="#">All Tools</a>
+                <a href="#calculators">Calculators</a>
+                <a href="#converters">Converters</a>
+                <a href="#categories">All Tools</a>
             </nav>
 
         </div>
@@ -57,9 +57,10 @@
                     <input
                         type="text"
                         placeholder="Search for a tool..."
+                        aria-label="Search tools"
                     >
 
-                    <button>
+                    <button type="button">
                         Search
                     </button>
 
@@ -70,7 +71,7 @@
         </section>
 
 
-        <section class="popular">
+        <section class="popular" id="calculators">
 
             <div class="container">
 
@@ -78,25 +79,52 @@
 
                 <div class="tools-grid">
 
-                    <div class="tool-card">
+                    <a href="calculators/percentage.html"
+                       class="tool-card">
+
                         <h3>Percentage Calculator</h3>
-                        <p>Calculate percentages quickly.</p>
-                    </div>
 
-                    <div class="tool-card">
+                        <p>
+                            Calculate percentages quickly.
+                        </p>
+
+                    </a>
+
+
+                    <a href="calculators/age.html"
+                       class="tool-card">
+
                         <h3>Age Calculator</h3>
-                        <p>Calculate your exact age.</p>
-                    </div>
 
-                    <div class="tool-card">
+                        <p>
+                            Calculate your exact age.
+                        </p>
+
+                    </a>
+
+
+                    <a href="converters/cm-to-m.html"
+                       class="tool-card">
+
                         <h3>CM to Meters</h3>
-                        <p>Convert centimeters to meters.</p>
-                    </div>
 
-                    <div class="tool-card">
+                        <p>
+                            Convert centimeters to meters.
+                        </p>
+
+                    </a>
+
+
+                    <a href="converters/kg-to-lbs.html"
+                       class="tool-card">
+
                         <h3>KG to Pounds</h3>
-                        <p>Convert kilograms to pounds.</p>
-                    </div>
+
+                        <p>
+                            Convert kilograms to pounds.
+                        </p>
+
+                    </a>
 
                 </div>
 
@@ -105,7 +133,69 @@
         </section>
 
 
-        <section class="categories">
+        <section class="popular" id="converters">
+
+            <div class="container">
+
+                <h2>Converters</h2>
+
+                <div class="tools-grid">
+
+                    <a href="converters/m-to-cm.html"
+                       class="tool-card">
+
+                        <h3>Meters to CM</h3>
+
+                        <p>
+                            Convert meters to centimeters.
+                        </p>
+
+                    </a>
+
+
+                    <a href="converters/lbs-to-kg.html"
+                       class="tool-card">
+
+                        <h3>Pounds to KG</h3>
+
+                        <p>
+                            Convert pounds to kilograms.
+                        </p>
+
+                    </a>
+
+
+                    <a href="converters/celsius-to-fahrenheit.html"
+                       class="tool-card">
+
+                        <h3>Celsius to Fahrenheit</h3>
+
+                        <p>
+                            Convert Celsius to Fahrenheit.
+                        </p>
+
+                    </a>
+
+
+                    <a href="converters/fahrenheit-to-celsius.html"
+                       class="tool-card">
+
+                        <h3>Fahrenheit to Celsius</h3>
+
+                        <p>
+                            Convert Fahrenheit to Celsius.
+                        </p>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="categories" id="categories">
 
             <div class="container">
 
@@ -118,25 +208,30 @@
                         <h3>Unit Converters</h3>
                     </div>
 
+
                     <div class="category">
                         🧮
                         <h3>Math Calculators</h3>
                     </div>
+
 
                     <div class="category">
                         💰
                         <h3>Finance</h3>
                     </div>
 
+
                     <div class="category">
                         📅
                         <h3>Date & Time</h3>
                     </div>
 
+
                     <div class="category">
                         ❤️
                         <h3>Health</h3>
                     </div>
+
 
                     <div class="category">
                         💻
@@ -165,8 +260,8 @@
     </footer>
 
 
-      <script src="js/tools.js?v=3"></script>
-    <script src="js/main.js?v=3"></script>
+    <script src="js/tools.js?v=4"></script>
+    <script src="js/main.js?v=4"></script>
 
 </body>
 
