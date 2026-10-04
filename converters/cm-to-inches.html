@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Centimeters to Inches Converter</title>
+
+    <meta name="description"
+          content="Convert centimeters to inches quickly and accurately with this free online length converter.">
+
+    <link rel="stylesheet" href="../css/style.css?v=7">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+            <a href="../index.html">Ultimate Tools</a>
+        </div>
+
+        <nav>
+            <a href="../index.html#calculators">Calculators</a>
+            <a href="../index.html#converters">Converters</a>
+            <a href="../all-tools.html">All Tools</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="container">
+
+        <div class="tool-header">
+
+            <h1>Centimeters to Inches Converter</h1>
+
+            <p>
+                Convert centimeters to inches quickly and accurately.
+            </p>
+
+        </div>
+
+
+        <div class="converter-card">
+
+            <label for="converterInput">
+                Centimeters (cm)
+            </label>
+
+            <input
+                type="number"
+                id="converterInput"
+                placeholder="Enter centimeters"
+                step="any"
+            >
+
+            <button id="convertButton">
+                Convert
+            </button>
+
+            <div class="result-box">
+
+                <span>Result</span>
+
+                <strong id="result">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Ultimate Tools. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+
+<script>
+
+window.converterConfig = {
+
+    from: "cm",
+
+    to: "in",
+
+    convert: function(value) {
+
+        return value / 2.54;
+
+    }
+
+};
+
+</script>
+
+<script src="../js/converter.js?v=4"></script>
+
+</body>
+
+</html>
